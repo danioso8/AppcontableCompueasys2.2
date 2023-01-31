@@ -29,7 +29,7 @@
                     <li><a class="dropdown-item" href="@Url.Action( "Index", "Usuarios")">Usuario</a></li>
                     <li><a class="dropdown-item" href="#!">Configuarcion</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Cerrar Sesion</a></li>
+                    <li><a class="dropdown-item" href="@Url.Action("CerrarSesion","Home")">Cerrar Sesion</a></li>
                 </ul>
             </li>
         </ul>
@@ -47,11 +47,11 @@
                         <hr />
                         <div class="sb-sidenav-menu-heading">Interfaces</div>
 
-                        <a class="nav-link" href=" @Url.Action("Index","Solicitantes") ">
+                        <a class="nav-link" href=" @Url.Action("Index","Facturas") ">
                             <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
                             Facturas
                         </a>
-                        <a class="nav-link" href=" @Url.Action("Index","Solicitantes") ">
+                        <a class="nav-link" href=" @Url.Action("Index","Clientes") ">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Clientes
                         </a>

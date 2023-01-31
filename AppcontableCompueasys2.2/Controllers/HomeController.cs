@@ -29,18 +29,22 @@ namespace CompueasysContable_2._2.Controllers
     public class HomeController : Controller
     {
         public DbcontableContext _context;
-        private readonly string ?CadenaSQL;
 
-        public HomeController(IConfiguration config, DbcontableContext context)
+
+        public HomeController(DbcontableContext context)
         {
 
             _context = context;
-            CadenaSQL = config.GetConnectionString("CadenaSql");
-             
+
+
 
         }
 
         public IActionResult Home()
+        {
+            return View();
+        }
+        public IActionResult Dashboard()
         {
             return View();
         }
@@ -69,18 +73,23 @@ namespace CompueasysContable_2._2.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
 
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Dashboard", "Home");
             }
             else
             {
                 ViewData["Mensage"] = "Usuario no encontrado  ";
-                return View();
+                return RedirectToAction("Login", "Home");
             }
 
 
         }
+        public async Task<IActionResult> CerrarSesion()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Home");
+        }
 
-              
+    
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

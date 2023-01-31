@@ -1,4 +1,4 @@
-﻿
+﻿@model AppcontableCompueasys2._2.Models.Data.Usuario
 @{
     Layout = null;
 }
@@ -14,27 +14,24 @@
         <div class="login-wrap  ">
 
 
-
-
-
             <div class="login-html">
                 <h1>CompuEasys</h1>
                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar sesion</label>
                 <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" id="tab-2" class="tab">Registrese</label>
                 <div class="login-form">
 
-                    <form>
+                    <form method="post" asp-action="Login" asp-controller="Home">
 
 
                         <div class="sign-in-htm">
                             <div class="group">
-                                <label for="user" class="label">Nombre de usuario o Email</label>
-                                <input formControlName="usuario" type="text" class="input">
+                                <label fsp-validation-for="Correo" class="label">Correo Electronico</label>
+                                <input asp-for="Correo" name="Correo" type="text"  class="input">
                                 
                             </div>
                             <div class="group">
-                                <label for="pass" class="label">Contraseña</label>
-                                <input formControlName="password"  type="password" class="input" data-type="password">
+                                <label asp-validation-for="Contraseña" class="label">Contraseña</label>
+                                <input asp-for="Contrasena" name="Contraseña" type="password" class="input" data-type="password">
                                 
                             </div>
                             <div class="group">
