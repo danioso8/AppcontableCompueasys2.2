@@ -1,0 +1,108 @@
+﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Nomina>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalApagar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuentos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorEps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorPension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConseptoNomina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConseptoDescuentos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auxilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpresaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalApagar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuentos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorEps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConseptoNomina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConseptoDescuentos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auxilio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

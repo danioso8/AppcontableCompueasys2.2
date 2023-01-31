@@ -44,6 +44,7 @@ namespace CompueasysContable_2._2.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult Dashboard()
         {
             return View();
@@ -77,8 +78,8 @@ namespace CompueasysContable_2._2.Controllers
             }
             else
             {
-                ViewData["Mensage"] = "Usuario no encontrado  ";
-                return RedirectToAction("Login", "Home");
+                ViewBag.User = "Usuario no encontrado  ";
+                return View();
             }
 
 

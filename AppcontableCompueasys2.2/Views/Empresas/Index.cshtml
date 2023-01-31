@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Empresa>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreEmpresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireecionEm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NitORut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonoOCelular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCiudadNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPaisNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPropietarioEmpresaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireecionEm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NitORut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoOCelular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPaisNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPropietarioEmpresaNavigation.IdUsuario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

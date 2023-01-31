@@ -1,0 +1,72 @@
+﻿@model AppcontableCompueasys2._2.Models.Data.Empresa
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Empresa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NombreEmpresa" class="control-label"></label>
+                <input asp-for="NombreEmpresa" class="form-control" />
+                <span asp-validation-for="NombreEmpresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireecionEm" class="control-label"></label>
+                <input asp-for="DireecionEm" class="form-control" />
+                <span asp-validation-for="DireecionEm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NitORut" class="control-label"></label>
+                <input asp-for="NitORut" class="form-control" />
+                <span asp-validation-for="NitORut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefonoOCelular" class="control-label"></label>
+                <input asp-for="TelefonoOCelular" class="form-control" />
+                <span asp-validation-for="TelefonoOCelular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPais" class="control-label"></label>
+                <select asp-for="IdPais" class="form-control" asp-items="ViewBag.IdPais"></select>
+                <span asp-validation-for="IdPais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDepartamento" class="control-label"></label>
+                <select asp-for="IdDepartamento" class="form-control" asp-items="ViewBag.IdDepartamento"></select>
+                <span asp-validation-for="IdDepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCiudad" class="control-label"></label>
+                <select asp-for="IdCiudad" class="form-control" asp-items="ViewBag.IdCiudad"></select>
+                <span asp-validation-for="IdCiudad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPropietarioEmpresa" class="control-label"></label>
+                <select asp-for="IdPropietarioEmpresa" class="form-control" asp-items="ViewBag.IdPropietarioEmpresa"></select>
+                <span asp-validation-for="IdPropietarioEmpresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
