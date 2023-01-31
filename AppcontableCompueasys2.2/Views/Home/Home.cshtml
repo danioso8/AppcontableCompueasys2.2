@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<head>
+    <link href="~/css/stylehome.css" rel="stylesheet" />
+    
+</head>
+
+<header class="p-4 ">
+    
+       <div class=" container">
+        <nav class="navbar">
+            <a href="/">
+                <img src="~/img/compueasyslogo.png" />
+            </a>
+
+            <div class="ytcuenta">
+                <a href="@Url.Action("Login","Home")">
+                    Ya tienes una cuenta
+                    <span class="btn">Entrar</span>
+                </a>
+            </div>
+        </nav>
+       </div>
+
+
+</header>
+
+
+
+<div class="container p-4 tb1 ">
+    <div class="row mt-4">
+        <div class="col-md-6 ">
+            <div class="">
+                <h1 class="fw-bold text-center">PROGRAMA CONTABLE</h1>
+            </div>
+
+            <div class="container">
+                <div class="card text-left ">
+                    <img class="card-img-top" src="holder.js/100px180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Soy autonomo </h4>
+                        <p class="card-text">
+                            Empieza tu prueba gratuita
+
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="card text-left mt-3">
+                    <a href="https://api.whatsapp.com/send?phone=3007915262&text=Hola%20buenas,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20acerca%20del%20programa%20contable">
+                        <img class="card-img-top" src="holder.js/100px180/" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">Asesoria </h4>
+                            <p class="card-text">
+                                Solicita una asesoria personalizada
+
+                            </p>
+
+                        </div>
+                    </a>
+
+                </div>
+               
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="imagenPrincipal">
+    <img src="~/img/foto principal.jpg" />
+
+</div>
+
+<div class="container tb1 " *ngIf="registro">
+    <div class="row ">
+        <div class="col-md-6 ">
+
+
+           
+
+
+        </div>
+
+    </div>
+</div>
+

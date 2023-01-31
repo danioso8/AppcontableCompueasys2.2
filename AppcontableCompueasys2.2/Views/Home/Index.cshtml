@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+
+<div class="container p-4 tb1 " *ngIf="!registro">
+    <div class="row mt-4">
+        <div class="col-md-6 ">
+            <div class="">
+                <h1 class="fw-bold text-center">PROGRAMA CONTABLE</h1>
+            </div>
+
+            <div class="container">
+                <div class="card text-left ">
+                    <img class="card-img-top" src="holder.js/100px180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Soy autonomo </h4>
+                        <p class="card-text">
+                            Empieza tu prueba gratuita
+
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="card text-left mt-3">
+                    <a href="https://api.whatsapp.com/send?phone=3007915262&text=Hola%20buenas,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20acerca%20del%20programa%20contable">
+                        <img class="card-img-top" src="holder.js/100px180/" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">Asesoria </h4>
+                            <p class="card-text">
+                                Solicita una asesoria personalizada
+
+                            </p>
+
+                        </div>
+                    </a>
+
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-3" type="button">
+                        Inicia una prueba
+                        gratis
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="imagenPrincipal">
+    <img src="../assets/Imagenes/foto principal.jpg"
+         width="200" alt="" srcset="">
+
+</div>
+
+<div class="container tb1 ">
+    <div class="row ">
+        <div class="col-md-6 ">
+
+
+            <div class="signup-form">
+                <form action="" method="post">
+                    <h2>Register</h2>
+                    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
+                               required="required">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check-label">
+                            <input type="checkbox" required="required"> I accept the
+                            <a href="#">Terms of Use</a> &amp;
+                            <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+                    </div>
+                </form>
+                <div class="text-center">
+                    Already have an account?
+                    <a href="#">Sign in</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
