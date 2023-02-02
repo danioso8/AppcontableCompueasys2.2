@@ -33,7 +33,7 @@ public partial class Producto
 
     public virtual ICollection<Factura> Facturas { get; } = new List<Factura>();
 
-    public virtual Categorium? IdCategoriaNavigation { get; set; }
+    public virtual Categoria? IdCategoriaNavigation { get; set; }
 
     public virtual Empresa? IdEmpresaNavigation { get; set; }
 

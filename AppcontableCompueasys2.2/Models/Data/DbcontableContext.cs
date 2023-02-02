@@ -17,7 +17,7 @@ public partial class DbcontableContext : DbContext
 
     public virtual DbSet<Carrito> Carritos { get; set; }
 
-    public virtual DbSet<Categorium> Categoria { get; set; }
+    public virtual DbSet<Categoria> Categoria { get; set; }
 
     public virtual DbSet<Ciudad> Ciudads { get; set; }
 
@@ -37,7 +37,7 @@ public partial class DbcontableContext : DbContext
 
     public virtual DbSet<Nomina> Nominas { get; set; }
 
-    public virtual DbSet<Pai> Pais { get; set; }
+    public virtual DbSet<Pais> Pais { get; set; }
 
     public virtual DbSet<Producto> Productos { get; set; }
 
@@ -64,7 +64,7 @@ public partial class DbcontableContext : DbContext
                 .HasConstraintName("FK__CARRITO__IdProdu__7D439ABD");
         });
 
-        modelBuilder.Entity<Categorium>(entity =>
+        modelBuilder.Entity<Categoria>(entity =>
         {
             entity.HasKey(e => e.IdCategoria).HasName("PK__CATEGORI__A3C02A1095AA2B61");
 
@@ -320,7 +320,7 @@ public partial class DbcontableContext : DbContext
                 .HasConstraintName("FK_NOMINA_USUARIO");
         });
 
-        modelBuilder.Entity<Pai>(entity =>
+        modelBuilder.Entity<Pais>(entity =>
         {
             entity.ToTable("PAIS");
 

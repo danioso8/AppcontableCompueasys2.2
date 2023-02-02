@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppcontableCompueasys2.2", "AppcontableCompueasys2.2\AppcontableCompueasys2.2.csproj", "{F3EA6C0D-9D1F-4499-A8A2-57E18560A07F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppcontableCompueasys2.2", "AppcontableCompueasys2.2\AppcontableCompueasys2.2.csproj", "{F3EA6C0D-9D1F-4499-A8A2-57E18560A07F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

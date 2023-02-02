@@ -50,10 +50,10 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Empresas/Create
         public IActionResult Create()
         {
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
-            ViewData["IdPropietarioEmpresa"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
+            ViewData["IdPropietarioEmpresa"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombres");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreEmpresa,DireecionEm,NitORut,TelefonoOCelular,Email,IdPais,IdDepartamento,IdCiudad,IdPropietarioEmpresa")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("NombreEmpresa,DireecionEm,NitORut,TelefonoOCelular,Email,IdPais,IdDepartamento,IdCiudad,IdPropietarioEmpresa")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {

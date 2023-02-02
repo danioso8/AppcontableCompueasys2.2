@@ -35,7 +35,7 @@ public partial class Empresa
 
     public virtual Departamento? IdDepartamentoNavigation { get; set; }
 
-    public virtual Pai? IdPaisNavigation { get; set; }
+    public virtual Pais? IdPaisNavigation { get; set; }
 
     public virtual Usuario? IdPropietarioEmpresaNavigation { get; set; }
 

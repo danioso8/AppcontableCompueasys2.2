@@ -55,15 +55,15 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre")] Pai pai)
+        public async Task<IActionResult> Create([Bind("Id,Nombre")] Pais pais)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pai);
+                _context.Add(pais);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pai);
+            return View(pais);
         }
 
         // GET: Pais/Edit/5
@@ -74,12 +74,12 @@ namespace AppcontableCompueasys2._2.Controllers
                 return NotFound();
             }
 
-            var pai = await _context.Pais.FindAsync(id);
-            if (pai == null)
+            var pais = await _context.Pais.FindAsync(id);
+            if (pais == null)
             {
                 return NotFound();
             }
-            return View(pai);
+            return View(pais);
         }
 
         // POST: Pais/Edit/5
@@ -87,9 +87,9 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Pai pai)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Pais pais)
         {
-            if (id != pai.Id)
+            if (id != pais.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 try
                 {
-                    _context.Update(pai);
+                    _context.Update(pais);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PaiExists(pai.Id))
+                    if (!PaiExists(pais.Id))
                     {
                         return NotFound();
                     }
@@ -114,7 +114,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pai);
+            return View(pais);
         }
 
         // GET: Pais/Delete/5
@@ -125,14 +125,14 @@ namespace AppcontableCompueasys2._2.Controllers
                 return NotFound();
             }
 
-            var pai = await _context.Pais
+            var pais = await _context.Pais
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pai == null)
+            if (pais == null)
             {
                 return NotFound();
             }
 
-            return View(pai);
+            return View(pais);
         }
 
         // POST: Pais/Delete/5
@@ -144,10 +144,10 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return Problem("Entity set 'DbcontableContext.Pais'  is null.");
             }
-            var pai = await _context.Pais.FindAsync(id);
-            if (pai != null)
+            var pais = await _context.Pais.FindAsync(id);
+            if (pais != null)
             {
-                _context.Pais.Remove(pai);
+                _context.Pais.Remove(pais);
             }
             
             await _context.SaveChangesAsync();

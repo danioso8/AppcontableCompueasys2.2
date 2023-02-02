@@ -9,87 +9,87 @@ using AppcontableCompueasys2._2.Models.Data;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
-    public class CategoriumsController : Controller
+    public class CiudadesController : Controller
     {
         private readonly DbcontableContext _context;
 
-        public CategoriumsController(DbcontableContext context)
+        public CiudadesController(DbcontableContext context)
         {
             _context = context;
         }
 
-        // GET: Categoriums
+        // GET: Ciudads
         public async Task<IActionResult> Index()
         {
-              return _context.Categoria != null ? 
-                          View(await _context.Categoria.ToListAsync()) :
-                          Problem("Entity set 'DbcontableContext.Categoria'  is null.");
+              return _context.Ciudads != null ? 
+                          View(await _context.Ciudads.ToListAsync()) :
+                          Problem("Entity set 'DbcontableContext.Ciudads'  is null.");
         }
 
-        // GET: Categoriums/Details/5
+        // GET: Ciudads/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Categoria == null)
+            if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
             }
 
-            var categorium = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.IdCategoria == id);
-            if (categorium == null)
+            var ciudad = await _context.Ciudads
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ciudad == null)
             {
                 return NotFound();
             }
 
-            return View(categorium);
+            return View(ciudad);
         }
 
-        // GET: Categoriums/Create
+        // GET: Ciudads/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categoriums/Create
+        // POST: Ciudads/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Activo,FechaRegistro")] Categorium categorium)
+        public async Task<IActionResult> Create([Bind("Id,Nombre")] Ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categorium);
+                _context.Add(ciudad);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categorium);
+            return View(ciudad);
         }
 
-        // GET: Categoriums/Edit/5
+        // GET: Ciudads/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Categoria == null)
+            if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
             }
 
-            var categorium = await _context.Categoria.FindAsync(id);
-            if (categorium == null)
+            var ciudad = await _context.Ciudads.FindAsync(id);
+            if (ciudad == null)
             {
                 return NotFound();
             }
-            return View(categorium);
+            return View(ciudad);
         }
 
-        // POST: Categoriums/Edit/5
+        // POST: Ciudads/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,Descripcion,Activo,FechaRegistro")] Categorium categorium)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Ciudad ciudad)
         {
-            if (id != categorium.IdCategoria)
+            if (id != ciudad.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 try
                 {
-                    _context.Update(categorium);
+                    _context.Update(ciudad);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriumExists(categorium.IdCategoria))
+                    if (!CiudadExists(ciudad.Id))
                     {
                         return NotFound();
                     }
@@ -114,49 +114,49 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(categorium);
+            return View(ciudad);
         }
 
-        // GET: Categoriums/Delete/5
+        // GET: Ciudads/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Categoria == null)
+            if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
             }
 
-            var categorium = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.IdCategoria == id);
-            if (categorium == null)
+            var ciudad = await _context.Ciudads
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ciudad == null)
             {
                 return NotFound();
             }
 
-            return View(categorium);
+            return View(ciudad);
         }
 
-        // POST: Categoriums/Delete/5
+        // POST: Ciudads/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Categoria == null)
+            if (_context.Ciudads == null)
             {
-                return Problem("Entity set 'DbcontableContext.Categoria'  is null.");
+                return Problem("Entity set 'DbcontableContext.Ciudads'  is null.");
             }
-            var categorium = await _context.Categoria.FindAsync(id);
-            if (categorium != null)
+            var ciudad = await _context.Ciudads.FindAsync(id);
+            if (ciudad != null)
             {
-                _context.Categoria.Remove(categorium);
+                _context.Ciudads.Remove(ciudad);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoriumExists(int id)
+        private bool CiudadExists(int id)
         {
-          return (_context.Categoria?.Any(e => e.IdCategoria == id)).GetValueOrDefault();
+          return (_context.Ciudads?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AppcontableCompueasys2._2.Models.Data;
 
-public partial class Pai
+public partial class Pais
 {
     public int Id { get; set; }
 

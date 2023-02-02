@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AppcontableCompueasys2._2.Models.Data;
 
-public partial class Categorium
+public partial class Categoria
 {
     public int IdCategoria { get; set; }
 

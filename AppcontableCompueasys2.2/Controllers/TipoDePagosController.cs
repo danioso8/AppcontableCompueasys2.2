@@ -9,11 +9,11 @@ using AppcontableCompueasys2._2.Models.Data;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
-    public class TipoDePagoesController : Controller
+    public class TipoDePagosController : Controller
     {
         private readonly DbcontableContext _context;
 
-        public TipoDePagoesController(DbcontableContext context)
+        public TipoDePagosController(DbcontableContext context)
         {
             _context = context;
         }

@@ -37,7 +37,7 @@ public partial class Usuario
 
     public virtual Departamento? IdDepartamentoNavigation { get; set; }
 
-    public virtual Pai? IdPaisNavigation { get; set; }
+    public virtual Pais? IdPaisNavigation { get; set; }
 
     public virtual ICollection<Nomina> Nominas { get; } = new List<Nomina>();
 }
