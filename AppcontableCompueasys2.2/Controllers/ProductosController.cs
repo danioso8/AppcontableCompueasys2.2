@@ -68,9 +68,9 @@ namespace AppcontableCompueasys2._2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", producto.IdEmpresa);
-            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "IdMarca", producto.IdMarca);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", producto.IdEmpresa);
+            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "Descripcion", producto.IdMarca);
             return View(producto);
         }
 
