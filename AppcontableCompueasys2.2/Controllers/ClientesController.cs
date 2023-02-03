@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
-    [Authorize]
     public class ClientesController : Controller
     {
         private readonly DbcontableContext _context;
@@ -52,10 +50,10 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa");
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
             return View();
         }
 
@@ -64,7 +62,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +102,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,Hora,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

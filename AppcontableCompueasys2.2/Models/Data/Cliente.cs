@@ -16,9 +16,7 @@ public partial class Cliente
     public string? Cedula { get; set; }
 
     public DateTime? Fecha { get; set; }
-
-    public TimeSpan? Hora { get; set; }
-
+        
     public int? IdEmpresa { get; set; }
 
     public int? IdPais { get; set; }
