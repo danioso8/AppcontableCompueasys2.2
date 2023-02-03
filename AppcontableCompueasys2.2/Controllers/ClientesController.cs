@@ -64,7 +64,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre,Direccion,Celular,Cedula,Fecha,Hora,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
