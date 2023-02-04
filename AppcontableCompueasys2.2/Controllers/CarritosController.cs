@@ -48,8 +48,8 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Carritoes/Create
         public IActionResult Create()
         {
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id");
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto");
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
+            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
             return View();
         }
 

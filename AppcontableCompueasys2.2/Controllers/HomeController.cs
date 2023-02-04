@@ -67,7 +67,8 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim("corre", usuario.Correo!),
                     //new Claim(ClaimTypes.Role, usuario.Rol!)
                 };
-
+                TempData["name"] = usuario.Nombres;
+                TempData["company"] = usuario.NombreEmpresa;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 

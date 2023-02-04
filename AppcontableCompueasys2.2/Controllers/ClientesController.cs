@@ -53,10 +53,10 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa");
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
             return View();
         }
 
@@ -73,10 +73,10 @@ namespace AppcontableCompueasys2._2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", cliente.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", cliente.IdDepartamento);
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", cliente.IdEmpresa);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", cliente.IdPais);
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", cliente.IdCiudad);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", cliente.IdDepartamento);
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", cliente.IdEmpresa);
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre", cliente.IdPais);
             return View(cliente);
         }
 
@@ -93,10 +93,10 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", cliente.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", cliente.IdDepartamento);
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", cliente.IdEmpresa);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", cliente.IdPais);
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", cliente.IdCiudad);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", cliente.IdDepartamento);
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", cliente.IdEmpresa);
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre", cliente.IdPais);
             return View(cliente);
         }
 
@@ -132,10 +132,10 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", cliente.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", cliente.IdDepartamento);
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", cliente.IdEmpresa);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", cliente.IdPais);
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", cliente.IdCiudad);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", cliente.IdDepartamento);
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", cliente.IdEmpresa);
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre", cliente.IdPais);
             return View(cliente);
         }
 
@@ -153,6 +153,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 .Include(c => c.IdEmpresaNavigation)
                 .Include(c => c.IdPaisNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
+            
             if (cliente == null)
             {
                 return NotFound();

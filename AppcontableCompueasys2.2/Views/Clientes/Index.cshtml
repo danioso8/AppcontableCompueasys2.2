@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Clientes</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,31 +14,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                NOMBRE
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
+                DIRECCION
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Celular)
+                CELULAR
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cedula)
+                CEDULA
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha)
+                FECHA
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCiudadNavigation)
+                CIUDAD
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+               DEPARTAMENTO
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEmpresaNavigation)
+                EMPRESA
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPaisNavigation)
+                PAIS
             </th>
             <th></th>
         </tr>
@@ -62,16 +62,16 @@
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Id)
+                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Id)
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.Id)
+                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.NombreEmpresa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPaisNavigation.Id)
+                @Html.DisplayFor(modelItem => item.IdPaisNavigation.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
