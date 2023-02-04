@@ -90,11 +90,10 @@ public partial class DbcontableContext : DbContext
 
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.Property(e => e.Id).HasColumnName("id");
-
             entity.ToTable("CLIENTES");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Id).HasColumnName("id");
+            
+            
             entity.Property(e => e.Cedula)
                 .HasMaxLength(10)
                 .IsFixedLength();
