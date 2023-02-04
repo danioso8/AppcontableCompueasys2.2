@@ -90,7 +90,7 @@ public partial class DbcontableContext : DbContext
 
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CLIENTES__3214EC076B531906");
+            entity.Property(e => e.Id).HasColumnName("id");
 
             entity.ToTable("CLIENTES");
 
