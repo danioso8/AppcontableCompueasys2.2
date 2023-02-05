@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                CEDULA
+            </th>
+            <th>
                 NOMBRE
             </th>
             <th>
@@ -22,22 +25,20 @@
             <th>
                 CELULAR
             </th>
-            <th>
-                CEDULA
-            </th>
-            <th>
+            
+            <th class="d-xl-none">
                 FECHA
             </th>
-            <th>
+            <th class="d-xl-none">
                 CIUDAD
             </th>
-            <th>
+            <th class="d-xl-none">
                DEPARTAMENTO
             </th>
-            <th>
+            <th class="d-xl-none">
                 EMPRESA
             </th>
-            <th>
+            <th class="d-xl-none">
                 PAIS
             </th>
             <th></th>
@@ -46,6 +47,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cedula)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -55,22 +59,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Celular)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
+            
+                <td class="d-xl-none">
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
-            <td>
+                <td class="d-xl-none">
                 @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
             </td>
-            <td>
+                <td class="d-xl-none">
                 @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
             </td>
-            <td>
+                <td class="d-xl-none">
                 @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.NombreEmpresa)
-            </td>
-            <td>
+            </td >
+                <td class="d-xl-none">
                 @Html.DisplayFor(modelItem => item.IdPaisNavigation.Nombre)
             </td>
             <td>
