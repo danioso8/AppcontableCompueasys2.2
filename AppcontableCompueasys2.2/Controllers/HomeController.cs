@@ -54,6 +54,7 @@ namespace CompueasysContable_2._2.Controllers
         {
             return View();
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> Login(string correo, string contraseña)

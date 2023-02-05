@@ -21,6 +21,8 @@ public partial class Usuario
 
     public DateTime? FechaRegistro { get; set; }
 
+    public string? Direccion { get; set; }
+
     public int? IdPais { get; set; }
 
     public int? IdDepartamento { get; set; }

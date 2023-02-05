@@ -55,8 +55,8 @@ a {
 }
 
 .login-html {
-    width: 480px;
-    height: 700px;
+    width: 430px;
+    height: auto;
     left: 35%;
     position: absolute;
     padding: 140px 70px 50px 70px;
@@ -77,16 +77,18 @@ a {
         border: none;
         border-bottom: #fff;
         position: absolute;
-        top: 5px;
+        top: 35px;
         left: 20%;
         font-family: 'Times New Roman', Times, serif;
-        font-size: 56px;
+        font-size: 46px;
         text-shadow: 10px 10px 30px rgba($color: #eaeaf3, $alpha: 1.0);
+        
     }
 
     .login-html #tab-2 {
         color: #93c40f;
     }
+
 
     .login-html .sign-in-htm,
     .login-html .sign-up-htm {
@@ -109,7 +111,7 @@ a {
 .login-form .group .label,
 .login-form .group .button {
     text-transform: uppercase;
-    padding: 10px;
+    padding: 5px;
 }
 
 .login-html .tab {
@@ -149,14 +151,16 @@ a {
         .login-form .group .input,
         .login-form .group .button {
             border: none;
-            padding: 15px 20px;
+            padding: 10px 15px;
             border-radius: 25px;
             background: rgba(255,255,255,.1);
         }
-
+        .login-form .group .input{
+            padding: 5px;
+        }
         .login-form .group .label {
             color: #aaa;
-            font-size: 12px;
+            font-size: 13px;
         }
 
         .login-form .group .button {
@@ -175,7 +179,7 @@ a {
             .login-form .group label .icon:before,
             .login-form .group label .icon:after {
                 content: '';
-                width: 10px;
+                width: 15px;
                 height: 2px;
                 background: #fff;
                 position: absolute;
