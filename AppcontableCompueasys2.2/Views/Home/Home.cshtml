@@ -1,31 +1,11 @@
-﻿@{
-    Layout = null;
+﻿@model AppcontableCompueasys2._2.Models.Data.Usuario
+
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/BarraHome.cshtml";
 }
-<!DOCTYPE html>
-<head>
-    <link href="~/css/stylehome.css" rel="stylesheet" />
-    
-</head>
 
-<header class="p-4 ">
-    
-       <div class=" container">
-        <nav class="navbar">
-            <a href="/">
-                <img src="~/img/compueasyslogo.png" />
-            </a>
-
-            <div class="ytcuenta">
-                <a href="@Url.Action("Login","Home")">
-                    Ya tienes una cuenta
-                    <span class="btn">Entrar</span>
-                </a>
-            </div>
-        </nav>
-       </div>
-
-
-</header>
 
 
 
@@ -59,12 +39,23 @@
 
                             </p>
 
+
+
                         </div>
                     </a>
 
                 </div>
+                <div class="d-grid gap-2">
+                    <a class="btn btn-primary mt-3" type="button" href="@Url.Action("Registro","Home")">
+                        Inicia una prueba gratis
+                    </a>
+                </div>
                
             </div>
+
+         
+
+
 
         </div>
 
@@ -77,16 +68,5 @@
 
 </div>
 
-<div class="container tb1 " *ngIf="registro">
-    <div class="row ">
-        <div class="col-md-6 ">
 
-
-           
-
-
-        </div>
-
-    </div>
-</div>
 

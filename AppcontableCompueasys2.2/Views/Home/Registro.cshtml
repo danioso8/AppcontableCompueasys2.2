@@ -1,0 +1,103 @@
+﻿@model AppcontableCompueasys2._2.Models.Data.Usuario
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/BarraHome.cshtml";
+}
+
+<head>
+    <link href="~/css/stylehome.css" rel="stylesheet" />
+    <link href="~/css/styleRegistro.css" rel="stylesheet" />
+  
+    
+</head>
+
+
+
+<body>
+
+
+
+
+
+    <div class="container p-4 tb1 ">
+        <div class="row mt-4">
+            <div class="col-md-6 ">
+                <div class="container">
+
+                    <form asp-action="Registro" asp-controller="Home" method="post">
+
+                        <div class="sign-up-htm">
+                            <div><h1>Registro de Usuario</h1></div>
+                            <div class="group">
+
+                                <input asp-for="NombreEmpresa" type="text" class="input" placeholder="Rason social [Empresa]">
+                                <span asp-validation-for="NombreEmpresa" class="text-danger"></span>
+                            </div>
+                            <div class="group">
+
+                                <input asp-for="Nombres" type="text" class="input" placeholder="Nombre">
+                                <span asp-validation-for="Nombres" class="text-danger"></span>
+                            </div>
+                            <div class="group">
+
+                                <input asp-for="Apellidos" type="text" class="input" placeholder="Apellidos">
+                                <span asp-validation-for="Apellidos" class="text-danger"></span>
+                            </div>
+                            <br />
+                            <hr />
+                            <br />
+                            <div class="group">
+
+                                <input asp-for="Correo" type="text" class="input" placeholder="Correo Electronico">
+
+                            </div>
+
+                            <div class="group">
+
+                                <input asp-for="EsAdministrador" class="input" id="admin" type="text" value="True">
+
+                            </div>
+
+                            <div class="group">
+
+                                <input asp-for="Activo" type="text" class="input" id="activo" value="SI">
+
+                            </div>
+
+                            <div class="group">
+
+                                <input asp-for="Contrasena" type="password" id="pass" class="input" data-type="password" placeholder="Contraseña">
+                                <span asp-validation-for="Contrasena" class="text-danger"></span>
+                            </div>
+                            <div class="group">
+
+                                <input type="password" class="input" id="repyPass" data-type="password" placeholder="Repita su contraseña">
+
+                            </div>
+                            <div class="group">
+                                <input type="submit" class="button" value="registrase">
+                            </div>
+                            <div class="hr"></div>
+
+
+
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="imagenPrincipal">
+        <img src="~/img/foto principal.jpg" />
+
+    </div>
+
+
+</body>
+

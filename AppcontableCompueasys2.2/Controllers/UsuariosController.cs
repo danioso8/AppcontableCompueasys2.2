@@ -55,24 +55,7 @@ namespace AppcontableCompueasys2._2.Controllers
             return View();
         }
 
-        // POST: Usuarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Nombres,Apellidos,Correo,Contrasena,EsAdministrador,Activo,FechaRegistro,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", usuario.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", usuario.IdDepartamento);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", usuario.IdPais);
-            return View(usuario);
-        }
+        
 
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)

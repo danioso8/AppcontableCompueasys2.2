@@ -53,8 +53,31 @@ namespace CompueasysContable_2._2.Controllers
         public IActionResult Login()
         {
             return View();
-        }
+        } 
         
+        public IActionResult Registro()
+        {
+            return View();
+        }
+
+
+        // POST: Usuarios/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Registro([Bind("IdUsuario,Nombres,Apellidos,Correo,Contrasena,EsAdministrador,Activo,FechaRegistro,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
+        {
+            if (!ModelState.IsValid)
+            {
+                _context.Add(usuario);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Login", "Home");
+            }
+            return Error();
+
+           
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(string correo, string contraseña)

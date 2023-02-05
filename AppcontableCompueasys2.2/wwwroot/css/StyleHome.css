@@ -33,14 +33,14 @@ small {
 .btn {
     background: rgb(165, 39, 238);
     transition: all 0.40s;
-    padding: 10px 10px 20px 20px;
+    
     padding: 10px;
     margin: 10px;
     border-radius: 15px;
     width: 450px;
     color: aliceblue;
     opacity: 60%;
-    font-size:30px;
+    font-size:23px;
 }
 .ytcuenta{
     position:absolute;
