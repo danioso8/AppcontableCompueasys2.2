@@ -8,16 +8,15 @@
 
 
 
-.grid {
+.grid img {
     position: absolute;
     top: 0;
-    left:0;
+    right: 0;
     height: 100vh;
-    opacity: 50%;
-    border:1px solid black;
-    background:grey;
-
+    opacity: 100%;
 }
+
+
 
 
 
@@ -27,19 +26,17 @@
 .login-html {
     width: 450px;
     height: auto;
-    right:18%;
-    top:15%;
+    left: 35%;
     position: absolute;
-    padding: 140px 70px 50px 70px;
+    padding: 140px 90px 90px 90px;
     background: rgb(37, 37, 39);
     background: rgb(13,15,17);
     background: rgb(13,15,17);
     background: radial-gradient(circle, rgba(13,15,17,1) 0%, rgb(20, 9, 87) 92%, rgba(224, 234, 236, 0.975) 100%);
     border-radius: 10%;
-    border: 1px solid #93c40f;
+   
     color: #fff;
-    
-    
+    box-shadow: 20px 20px 50px 2px rgba($color: #57566d, $alpha: 1.0);
 }
 
 
