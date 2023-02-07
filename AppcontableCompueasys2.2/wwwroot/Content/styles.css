@@ -7823,8 +7823,13 @@ textarea.form-control-lg {
 }
 
 .bg-primary {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+    --bs-bg-opacity: 1;
+    background: #3B71CA;
+}
+.bg-blue {
+    --bs-bg-opacity: 1;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(40,28,134,1) 35%, rgba(17,133,157,1) 100%);
 }
 
 .bg-secondary {

@@ -1,86 +1,103 @@
 ﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Cliente>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Clientes</h1>
+<div class="pt-4">
+    <h1>Clientes</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                CEDULA
-            </th>
-            <th>
-                NOMBRE
-            </th>
-            <th>
-                DIRECCION
-            </th>
-            <th>
-                CELULAR
-            </th>
-            
-            <th class="d-xl-none">
-                FECHA
-            </th>
-            <th class="d-xl-none">
-                CIUDAD
-            </th>
-            <th class="d-xl-none">
-               DEPARTAMENTO
-            </th>
-            <th class="d-xl-none">
-                EMPRESA
-            </th>
-            <th class="d-xl-none">
-                PAIS
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cedula)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Celular)
-            </td>
-            
-                <td class="d-xl-none">
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-                <td class="d-xl-none">
-                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
-            </td>
-                <td class="d-xl-none">
-                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
-            </td>
-                <td class="d-xl-none">
-                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.NombreEmpresa)
-            </td >
-                <td class="d-xl-none">
-                @Html.DisplayFor(modelItem => item.IdPaisNavigation.Nombre)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create">NUEVO CLIENTE</a>
+    </p>
+
+    <div class="container-fluid px-4">
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Tabla de Clientes
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>
+                                CEDULA
+                            </th>
+                            <th>
+                                NOMBRE
+                            </th>
+                            <th>
+                                DIRECCION
+                            </th>
+                            <th>
+                                CELULAR
+                            </th>
+
+                            <th class="d-xl-none">
+                                FECHA
+                            </th>
+                            <th class="d-xl-none">
+                                CIUDAD
+                            </th>
+                            <th class="d-xl-none">
+                                DEPARTAMENTO
+                            </th>
+                            <th class="d-xl-none">
+                                EMPRESA
+                            </th>
+                            <th class="d-xl-none">
+                                PAIS
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cedula)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Celular)
+                                </td>
+
+                                <td class="d-xl-none">
+                                    @Html.DisplayFor(modelItem => item.Fecha)
+                                </td>
+                                <td class="d-xl-none">
+                                    @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
+                                </td>
+                                <td class="d-xl-none">
+                                    @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
+                                </td>
+                                <td class="d-xl-none">
+                                    @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.NombreEmpresa)
+                                </td>
+                                <td class="d-xl-none">
+                                    @Html.DisplayFor(modelItem => item.IdPaisNavigation.Nombre)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

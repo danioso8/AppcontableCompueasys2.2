@@ -4,87 +4,111 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="pt-4" >
 
-<h1>Index</h1>
+<h1>PRODUCTOS</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nuevo producto</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RutaImagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaRegistro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCategoriaNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdEmpresaNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdMarcaNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RutaImagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaRegistro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.IdCategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdMarcaNavigation.IdMarca)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container-fluid px-4">
+   
+   
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Tabla de Productos
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Stock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RutaImagen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Activo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdCategoriaNavigation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdEmpresaNavigation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdMarcaNavigation)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Precio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RutaImagen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaRegistro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.IdCategoria)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdMarcaNavigation.IdMarca)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+        
+        
+   

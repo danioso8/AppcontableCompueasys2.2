@@ -21,9 +21,18 @@
     <title>Contable</title>
     <link href="~/Content/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.css" rel="stylesheet">
+    
+    
+
 </head>
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-blue">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-warning" href="index.html">@company</a>
         <!-- Sidebar Toggle-->
@@ -52,16 +61,23 @@
             </li>
         </ul>
     </nav>
+
+
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+
+
+
+            <nav class="sb-sidenav accordion sb-sidenav-dark bg-blue" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Resumen</div>
-                        <a class="nav-link" href=" @Url.Action("Index","Dashboard") ">
+                        <a class="nav-link" href=" @Url.Action("Dashboard","Home") ">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
+                        
                         <hr />
                         <div class="sb-sidenav-menu-heading">Interfaces</div>
 
@@ -73,6 +89,24 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Clientes
                         </a>
+
+                        <hr />
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsproducto" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-city"></i></div>
+                            Inventario
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsproducto" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href=" @Url.Action("Index","Productos") ">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                                    Productos
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Index","Pais")">Categotias Productos</a>
+                                <a class="nav-link" href="@Url.Action("Index","Marcas")">Marca Producto</a>
+
+                            </nav>
+                        </div>
 
                         <hr />
 
@@ -92,6 +126,7 @@
 
                             </nav>
                         </div>
+                        
                         <hr />
                         <div class="sb-sidenav-menu-heading">Mantenimiento</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -110,22 +145,7 @@
                         </div>
 
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsproducto" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-city"></i></div>
-                            Inventario
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayoutsproducto" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href=" @Url.Action("Index","Productos") ">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                                    Productos
-                                </a>
-                                <a class="nav-link" href="@Url.Action("Index","Pais")">Categotias Productos</a>
-                                <a class="nav-link" href="@Url.Action("Index","Marcas")">Marca Producto</a>
-
-                            </nav>
-                        </div>
+                      
                         <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
@@ -134,6 +154,8 @@
                 </div>
 
             </nav>
+
+
         </div>
         <div id="layoutSidenav_content">
             <main>
@@ -150,6 +172,28 @@
     <script src="~/assets/demo/chart-area-demo.js"></script>
     <script src="~/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="~/js/datatables-simple-demo.js"></script>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.js"></script>
+
+
+    <!-- ============================================================
+    =SCRIPTS PARA ESTA PAGINA
+    ===============================================================-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- SOLO ES DE EJEMPLO - IGNORAR -->
+    <script src="~/js/vistas/chart-bar-demo.js"></script>
+    <script src="~/js/vistas/chart-pie-demo.js"></script>
+    
+    <script src="~/js/scripts.js"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
 
     @RenderSection("Scripts", required: false)
