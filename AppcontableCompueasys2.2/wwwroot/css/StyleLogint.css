@@ -8,57 +8,27 @@
 
 
 
-.grid img {
+.grid {
     position: absolute;
     top: 0;
-    right: 0;
+    left:0;
     height: 100vh;
-    opacity: 100%;
+    opacity: 50%;
+    border:1px solid black;
+    background:grey;
+
 }
 
 
-*, :after, :before {
-    box-sizing: border-box
-}
 
-.clearfix:after, .clearfix:before {
-    content: '';
-    display: table
-}
 
-.clearfix:after {
-    clear: both;
-    display: block
-}
 
-a {
-    color: inherit;
-    text-decoration: none
-}
-
-.login-wrap {
-    position: absolute;
-    pointer-events: all;
-    width: 1600px;
-    top: 0%;
-    overflow: initial;
-    left: 10%;
-    border: none;
-    border-radius: 50%;
-    background-image: url("https://thumbs.dreamstime.com/b/gr%C3%A1fico-financiero-contador-trabajando-en-escritorio-con-calculadora-contabilidad-161052659.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    position: absolute;
-    padding: 90px 70px 50px 70px;
-    box-shadow: 10px 20px 50px 20px rgba($color: #57566d, $alpha: 1.0);
-    
-}
 
 .login-html {
-    width: auto;
+    width: 450px;
     height: auto;
-    left: 35%;
+    right:18%;
+    top:15%;
     position: absolute;
     padding: 140px 70px 50px 70px;
     background: rgb(37, 37, 39);
@@ -68,7 +38,8 @@ a {
     border-radius: 10%;
     border: 1px solid #93c40f;
     color: #fff;
-    box-shadow: 20px 20px 50px 2px rgba($color: #57566d, $alpha: 1.0);
+    
+    
 }
 
 
@@ -87,27 +58,10 @@ a {
         text-shadow: 10px 10px 30px rgba($color: #eaeaf3, $alpha: 1.0);
     }
 
-    .login-html #tab-2 {
-        color: #93c40f;
-    }
+    
+    
 
-    .login-html .sign-in-htm,
-    .login-html .sign-up-htm {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        transform: rotateY(180deg);
-        backface-visibility: hidden;
-        transition: all .4s linear;
-    }
-
-    .login-html .sign-in,
-    .login-html .sign-up,
-    .login-form .group .check {
-        display: none;
-    }
+   
 
 .login-form .group .label,
 .login-form .group .button {
@@ -124,16 +78,10 @@ a {
     border-bottom: 2px solid transparent;
 }
 
-.login-html .sign-in:checked + .tab,
-.login-html .sign-up:checked + .tab {
-    color: #fff;
-    border-color: #4ada11;
-    
 
-}
 
 .login-form {
-    min-height: 345px;
+    min-height: 355px;
     position: relative;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -169,60 +117,11 @@ a {
             background: #1161ee;
         }
 
-        .login-form .group label .icon {
-            width: 15px;
-            height: 15px;
-            border-radius: 2px;
-            position: relative;
-            display: inline-block;
-            background: rgba(255,255,255,.1);
-        }
+        
 
-            .login-form .group label .icon:before,
-            .login-form .group label .icon:after {
-                content: '';
-                width: 10px;
-                height: 2px;
-                background: #fff;
-                position: absolute;
-                transition: all .2s ease-in-out 0s;
-            }
 
-            .login-form .group label .icon:before {
-                left: 3px;
-                width: 5px;
-                bottom: 6px;
-                transform: scale(0) rotate(0);
-            }
-
-            .login-form .group label .icon:after {
-                top: 6px;
-                right: 0;
-                transform: scale(0) rotate(0);
-            }
-
-        .login-form .group .check:checked + label {
-            color: #fff;
-        }
-
-            .login-form .group .check:checked + label .icon {
-                background: #1161ee;
-            }
-
-                .login-form .group .check:checked + label .icon:before {
-                    transform: scale(1) rotate(45deg);
-                }
-
-                .login-form .group .check:checked + label .icon:after {
-                    transform: scale(1) rotate(-45deg);
-                }
-
-.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
-    transform: rotate(0);
-}
-
-.login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
-    transform: rotate(0);
+.Rpass{
+    color:white;
 }
 
 .Rpass:hover {
@@ -244,7 +143,5 @@ a {
     .container img  {
         display: none;
     }
-    .login-wrap{
-        display:none;
-    }
+   
 }

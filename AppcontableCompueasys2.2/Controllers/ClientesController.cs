@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.AspNetCore.Authorization;
+using AppcontableCompueasys2._2.Models;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
     [Authorize]
     public class ClientesController : Controller
     {
-       
+       datosLayout _companny = new datosLayout();
         private readonly DbcontableContext _context;
 
         public ClientesController(DbcontableContext context)
@@ -24,6 +25,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
+            
             var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation);
             return View(await dbcontableContext.ToListAsync());
         }

@@ -1,0 +1,8 @@
+﻿namespace AppcontableCompueasys2._2.Models
+{
+    public partial class datosLayout
+    {
+        public string? Name { get; set; }
+        public string? company { get; set; }
+    }
+}
