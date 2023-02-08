@@ -21,7 +21,14 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Marcas
         public async Task<IActionResult> Index()
         {
-              return _context.Marcas != null ? 
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            return _context.Marcas != null ? 
                           View(await _context.Marcas.ToListAsync()) :
                           Problem("Entity set 'DbcontableContext.Marcas'  is null.");
         }
@@ -29,6 +36,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Marcas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Marcas == null)
             {
                 return NotFound();
@@ -47,6 +61,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Marcas/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             return View();
         }
 
@@ -57,6 +78,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdMarca,Descripcion,Activo,FechaRegistro")] Marca marca)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (ModelState.IsValid)
             {
                 _context.Add(marca);
@@ -69,6 +97,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Marcas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Marcas == null)
             {
                 return NotFound();
@@ -89,6 +124,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdMarca,Descripcion,Activo,FechaRegistro")] Marca marca)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id != marca.IdMarca)
             {
                 return NotFound();
@@ -120,6 +162,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Marcas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Marcas == null)
             {
                 return NotFound();
@@ -140,6 +189,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (_context.Marcas == null)
             {
                 return Problem("Entity set 'DbcontableContext.Marcas'  is null.");

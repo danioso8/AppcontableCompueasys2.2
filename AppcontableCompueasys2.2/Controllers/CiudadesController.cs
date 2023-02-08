@@ -21,7 +21,14 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Ciudads
         public async Task<IActionResult> Index()
         {
-              return _context.Ciudads != null ? 
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            return _context.Ciudads != null ? 
                           View(await _context.Ciudads.ToListAsync()) :
                           Problem("Entity set 'DbcontableContext.Ciudads'  is null.");
         }
@@ -29,6 +36,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Ciudads/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
@@ -47,6 +61,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Ciudads/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             return View();
         }
 
@@ -57,6 +78,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Ciudad ciudad)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (ModelState.IsValid)
             {
                 _context.Add(ciudad);
@@ -69,6 +97,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Ciudads/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
@@ -89,6 +124,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Ciudad ciudad)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id != ciudad.Id)
             {
                 return NotFound();
@@ -120,6 +162,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Ciudads/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Ciudads == null)
             {
                 return NotFound();
@@ -140,6 +189,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (_context.Ciudads == null)
             {
                 return Problem("Entity set 'DbcontableContext.Ciudads'  is null.");

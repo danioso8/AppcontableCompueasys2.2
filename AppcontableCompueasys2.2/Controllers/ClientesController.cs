@@ -97,6 +97,12 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
@@ -113,6 +119,12 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (id == null || _context.Clientes == null)
             {
                 return NotFound();
@@ -137,6 +149,12 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (id != cliente.Id)
             {
                 return NotFound();
@@ -172,6 +190,12 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (id == null || _context.Clientes == null)
             {
                 return NotFound();
@@ -197,6 +221,12 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (_context.Clientes == null)
             {
                 return Problem("Entity set 'DbcontableContext.Clientes'  is null.");

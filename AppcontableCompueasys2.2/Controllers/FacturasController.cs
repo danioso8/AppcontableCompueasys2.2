@@ -21,6 +21,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas
         public async Task<IActionResult> Index()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdProductoNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
             return View(await dbcontableContext.ToListAsync());
         }
@@ -28,6 +35,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Facturas == null)
             {
                 return NotFound();
@@ -50,6 +64,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id");
             ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto");
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Id");
@@ -64,6 +85,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdFactura,IdUsuario,CantidadProducto,Total,FechaCompra,IdCliente,IdProducto,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago")] Factura factura)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (ModelState.IsValid)
             {
                 _context.Add(factura);
@@ -80,6 +108,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Facturas == null)
             {
                 return NotFound();
@@ -104,6 +139,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdFactura,IdUsuario,CantidadProducto,Total,FechaCompra,IdCliente,IdProducto,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago")] Factura factura)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id != factura.IdFactura)
             {
                 return NotFound();
@@ -139,6 +181,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Facturas == null)
             {
                 return NotFound();
@@ -163,6 +212,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (_context.Facturas == null)
             {
                 return Problem("Entity set 'DbcontableContext.Facturas'  is null.");

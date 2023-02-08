@@ -21,6 +21,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Nominas
         public async Task<IActionResult> Index()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             var dbcontableContext = _context.Nominas.Include(n => n.IdEmpleadoNavigation).Include(n => n.IdEmpresaNavigation).Include(n => n.IdUsuarioNavigation);
             return View(await dbcontableContext.ToListAsync());
         }
@@ -28,6 +35,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Nominas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Nominas == null)
             {
                 return NotFound();
@@ -49,6 +63,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Nominas/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             ViewData["IdEmpleado"] = new SelectList(_context.Empleados, "Id", "Id");
             ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
@@ -62,6 +83,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,IdEmpleado,Cantidad,Valor,TotalApagar,IdUsuario,IdEmpresa,FechaPago,Descuentos,ValorEps,ValorPension,ConseptoNomina,ConseptoDescuentos,Auxilio")] Nomina nomina)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (ModelState.IsValid)
             {
                 _context.Add(nomina);
@@ -77,6 +105,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Nominas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Nominas == null)
             {
                 return NotFound();
@@ -100,6 +135,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,IdEmpleado,Cantidad,Valor,TotalApagar,IdUsuario,IdEmpresa,FechaPago,Descuentos,ValorEps,ValorPension,ConseptoNomina,ConseptoDescuentos,Auxilio")] Nomina nomina)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id != nomina.Id)
             {
                 return NotFound();
@@ -134,6 +176,13 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Nominas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (id == null || _context.Nominas == null)
             {
                 return NotFound();
@@ -157,6 +206,13 @@ namespace AppcontableCompueasys2._2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
             if (_context.Nominas == null)
             {
                 return Problem("Entity set 'DbcontableContext.Nominas'  is null.");
