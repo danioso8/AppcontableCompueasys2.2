@@ -25,14 +25,34 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            
-            var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation);
-            return View(await dbcontableContext.ToListAsync());
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+            if (empresa.NombreEmpresa == company)
+            {
+                var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
+                return View(await dbcontableContext.ToListAsync());
+            } 
+            return View();
+           
         }
 
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
             if (id == null || _context.Clientes == null)
             {
                 return NotFound();
@@ -55,6 +75,14 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+
+
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
             ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa");

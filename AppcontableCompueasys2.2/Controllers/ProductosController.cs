@@ -21,6 +21,14 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Productoes
         public async Task<IActionResult> Index()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+
+
             var dbcontableContext = _context.Productos.Include(p => p.IdCategoriaNavigation).Include(p => p.IdEmpresaNavigation).Include(p => p.IdMarcaNavigation);
             return View(await dbcontableContext.ToListAsync());
         }

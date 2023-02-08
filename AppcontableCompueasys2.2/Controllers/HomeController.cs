@@ -31,16 +31,17 @@ namespace CompueasysContable_2._2.Controllers
     public class HomeController : Controller
     {
         public DbcontableContext _context;
+        
 
-       datosLayout _companny = new datosLayout();
+       
       
 
         public HomeController(DbcontableContext context)
         {
 
             _context = context;
+
            
-            
 
 
 
@@ -53,10 +54,16 @@ namespace CompueasysContable_2._2.Controllers
         [Authorize]
         public IActionResult Dashboard()
         {
-            TempData["nameEmpresa"] = Request.Cookies["claimsIdetity"];
-            TempData["name"] = Request.Cookies["ClaimsPrincipal"];
+           
+           
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            var company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
 
-
+          
 
             return View();
         }
@@ -104,18 +111,28 @@ namespace CompueasysContable_2._2.Controllers
                    
                 };
                 
+              
                 TempData["name"] = usuario.Nombres;
                 TempData["company"] = usuario.NombreEmpresa;
+                var admin = usuario.EsAdministrador;
+                ViewBag.company = TempData["company"];
+                ViewBag.name = TempData["name"];
+                var company = ViewBag.company;
+                var name = ViewBag.name;
+                TempData["company"] = company;
+                TempData["name"] = name;
+  
+                TempData["admin"] = admin;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                
+
                 //Cookies para mostrar datos en la vista principla
 
-                
-                
 
+
+                
                 return RedirectToAction("Dashboard", "Home");
             }
             else
