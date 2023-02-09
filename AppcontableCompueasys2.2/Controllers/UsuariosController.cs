@@ -28,8 +28,18 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            var dbcontableContext = _context.Usuarios.Include(u => u.IdCiudadNavigation).Include(u => u.IdDepartamentoNavigation).Include(u => u.IdPaisNavigation);
-            return View(await dbcontableContext.ToListAsync());
+
+
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+
+            if (empresa.NombreEmpresa == company)
+            {
+
+                var dbcontableContext = _context.Usuarios.Include(u => u.IdCiudadNavigation).Include(u => u.IdDepartamentoNavigation).Include(u => u.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
+                return View(await dbcontableContext.ToListAsync());
+            }
+            return View();
         }
 
         // GET: Usuarios/Details/5

@@ -44,8 +44,7 @@ namespace AppcontableCompueasys2._2.Controllers
             }
             else
             {
-                var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
-                return View(await dbcontableContext.ToListAsync());
+                return View();
             }
                 
           
