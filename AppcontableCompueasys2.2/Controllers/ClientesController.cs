@@ -16,10 +16,11 @@ namespace AppcontableCompueasys2._2.Controllers
     {
        datosLayout _companny = new datosLayout();
         private readonly DbcontableContext _context;
-
+       
         public ClientesController(DbcontableContext context)
         {
             _context = context;
+           
         }
 
         // GET: Clientes
@@ -33,15 +34,21 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
 
-            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
-            if (empresa.NombreEmpresa == company)
+          
+                if (empresa.NombreEmpresa == company)
+                {
+                    var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
+                    return View(await dbcontableContext.ToListAsync());
+            }
+            else
             {
                 var dbcontableContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
                 return View(await dbcontableContext.ToListAsync());
-            } 
-            return View();
-           
+            }
+                
+          
         }
 
         // GET: Clientes/Details/5

@@ -28,6 +28,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
             var dbcontableContext = _context.Empresas.Include(e => e.IdCiudadNavigation).Include(e => e.IdDepartamentoNavigation).Include(e => e.IdPaisNavigation).Include(e => e.IdPropietarioEmpresaNavigation);
             return View(await dbcontableContext.ToListAsync());
         }
@@ -71,10 +72,15 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
+
+            
+            
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
             ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
             ViewData["IdPropietarioEmpresa"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombres");
+            
             return View();
         }
 
@@ -92,6 +98,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
             if (ModelState.IsValid)
             {
                 _context.Add(empresa);

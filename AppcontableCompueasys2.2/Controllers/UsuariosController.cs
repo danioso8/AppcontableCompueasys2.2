@@ -118,6 +118,8 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
+
             if (id != usuario.IdUsuario)
             {
                 return NotFound();

@@ -1,7 +1,6 @@
 ﻿
 using AppcontableCompueasys2._2.Models;
 using AppcontableCompueasys2._2.Models.Data;
-
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System;
@@ -130,10 +129,18 @@ namespace CompueasysContable_2._2.Controllers
 
                 //Cookies para mostrar datos en la vista principla
 
-
+                var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+                if (empresa == null)
+                {
+                    return RedirectToAction("Create", "Empresas");
+                }
+                else
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
 
                 
-                return RedirectToAction("Dashboard", "Home");
+               
             }
             else
             {
