@@ -134,11 +134,11 @@ namespace CompueasysContable_2._2.Controllers
                  var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
                 if (empresa !=null)
                 {
-                    return RedirectToAction("Dashboard", "Home");
-                   
-                }
-                return RedirectToAction("Create", "Empresas");
+                    return RedirectToAction("Create", "Empresas");
 
+                }
+                
+                return RedirectToAction("Dashboard", "Home");
 
 
             }
@@ -150,6 +150,11 @@ namespace CompueasysContable_2._2.Controllers
 
 
         }
+
+
+
+
+
         public async Task<IActionResult> CerrarSesion()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
