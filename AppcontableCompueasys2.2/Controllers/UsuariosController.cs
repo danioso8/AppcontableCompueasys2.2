@@ -23,27 +23,27 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
+            ViewBag.id = TempData["id"];
+            int id = ViewBag.id;
             string company = ViewBag.company;
             var name = ViewBag.name;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            
 
 
-            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            
+              
 
-            if (empresa !=null)
-            {
-                if (empresa.NombreEmpresa == company)
-                {
-
-                    var dbcontableContext = _context.Usuarios.Include(u => u.IdCiudadNavigation).Include(u => u.IdDepartamentoNavigation).Include(u => u.IdPaisNavigation);
-                    return View(await dbcontableContext.ToListAsync());
-                }
-            }
+                    var dbcontableContext = _context.Usuarios.Find(id);
+                    return View( dbcontableContext);
+             
           
-            return RedirectToAction("Create","Empresas");
+            
         }
+
+
+
 
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)

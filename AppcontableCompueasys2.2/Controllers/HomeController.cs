@@ -132,7 +132,7 @@ namespace CompueasysContable_2._2.Controllers
 
                 //Cookies para mostrar datos en la vista principla
                  var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
-                if (empresa !=null)
+                if (empresa == null)
                 {
                     return RedirectToAction("Create", "Empresas");
 
