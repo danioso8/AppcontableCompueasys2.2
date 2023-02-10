@@ -111,16 +111,19 @@ namespace CompueasysContable_2._2.Controllers
                 };
                 
               
+                TempData["idUser"] = usuario.IdUsuario;
                 TempData["name"] = usuario.Nombres;
                 TempData["company"] = usuario.NombreEmpresa;
+                var id = TempData["idUser"];
                 var admin = usuario.EsAdministrador;
+                ViewBag.IdUsuario = id;
                 ViewBag.company = TempData["company"];
                 ViewBag.name = TempData["name"];
                 var company = ViewBag.company;
                 var name = ViewBag.name;
                 TempData["company"] = company;
                 TempData["name"] = name;
-  
+                TempData["idUser"] = id;
                 TempData["admin"] = admin;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -128,19 +131,16 @@ namespace CompueasysContable_2._2.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
                 //Cookies para mostrar datos en la vista principla
-
-                var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
-                if (empresa == null)
-                {
-                    return RedirectToAction("Create", "Empresas");
-                }
-                else
+                 var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+                if (empresa !=null)
                 {
                     return RedirectToAction("Dashboard", "Home");
+                   
                 }
+                return RedirectToAction("Create", "Empresas");
 
-                
-               
+
+
             }
             else
             {

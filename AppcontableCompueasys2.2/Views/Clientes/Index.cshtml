@@ -37,21 +37,7 @@
                                 CELULAR
                             </th>
 
-                            <th class="d-xl-none">
-                                FECHA
-                            </th>
-                            <th class="d-xl-none">
-                                CIUDAD
-                            </th>
-                            <th class="d-xl-none">
-                                DEPARTAMENTO
-                            </th>
-                            <th class="d-xl-none">
-                                EMPRESA
-                            </th>
-                            <th class="d-xl-none">
-                                PAIS
-                            </th>
+                           
                             <th></th>
                         </tr>
                     </thead>
@@ -72,21 +58,8 @@
                                     @Html.DisplayFor(modelItem => item.Celular)
                                 </td>
 
-                                <td class="d-xl-none">
-                                    @Html.DisplayFor(modelItem => item.Fecha)
-                                </td>
-                                <td class="d-xl-none">
-                                    @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
-                                </td>
-                                <td class="d-xl-none">
-                                    @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
-                                </td>
-                                <td class="d-xl-none">
-                                    @Html.DisplayFor(modelItem => item.IdEmpresaNavigation.NombreEmpresa)
-                                </td>
-                                <td class="d-xl-none">
-                                    @Html.DisplayFor(modelItem => item.IdPaisNavigation.Nombre)
-                                </td>
+                               
+                               
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

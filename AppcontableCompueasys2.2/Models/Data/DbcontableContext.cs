@@ -338,6 +338,7 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(500)
                 .IsUnicode(false);
+           
             entity.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -363,6 +364,8 @@ public partial class DbcontableContext : DbContext
             entity.HasOne(d => d.IdMarcaNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdMarca)
                 .HasConstraintName("FK__PRODUCTO__IdMarc__151B244E");
+
+          
         });
 
         modelBuilder.Entity<TipoDePago>(entity =>

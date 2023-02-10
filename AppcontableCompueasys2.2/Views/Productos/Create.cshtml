@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Marca = ViewData["IdMarca"];
+   
 }
 
 <h1>Create</h1>
@@ -25,11 +27,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdMarca" class="control-label"></label>
-                <select asp-for="IdMarca" class ="form-control" asp-items="ViewBag.IdMarca"></select>
+                <select asp-for="IdMarca" class="form-control" asp-items="@ViewBag.Marca"></select>
             </div>
             <div class="form-group">
                 <label asp-for="IdCategoria" class="control-label"></label>
-                <select asp-for="IdCategoria" class ="form-control" asp-items="ViewBag.IdCategoria"></select>
+                <select asp-for="IdCategoria" class="form-control" asp-items="@ViewBag.Categoria"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Stock" class="control-label"></label>
@@ -43,8 +45,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdEmpresa" class="control-label"></label>
-                <select asp-for="IdEmpresa" class ="form-control" asp-items="ViewBag.IdEmpresa"></select>
+                <select asp-for="IdEmpresa" class="form-control" asp-items="@ViewBag.Empresa"></select>
             </div>
+           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -56,3 +59,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -30,7 +30,7 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.id = TempData["id"];
 
 
-            var dbcontableContext = _context.Productos.Include(p => p.IdCategoriaNavigation).Include(p => p.IdEmpresaNavigation).Include(p => p.IdMarcaNavigation);
+            var dbcontableContext = _context.Productos;
             return View(await dbcontableContext.ToListAsync());
         }
 
@@ -224,14 +224,15 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 _context.Productos.Remove(producto);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductoExists(int id)
         {
-          return (_context.Productos?.Any(e => e.IdProducto == id)).GetValueOrDefault();
+            return (_context.Productos?.Any(e => e.IdProducto == id)).GetValueOrDefault();
         }
     }
 }
+

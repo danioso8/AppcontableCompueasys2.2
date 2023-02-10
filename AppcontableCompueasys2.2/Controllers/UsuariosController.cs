@@ -32,14 +32,17 @@ namespace AppcontableCompueasys2._2.Controllers
 
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
-
-            if (empresa.NombreEmpresa == company)
+            if (empresa !=null)
             {
+                if (empresa.NombreEmpresa == company)
+                {
 
-                var dbcontableContext = _context.Usuarios.Include(u => u.IdCiudadNavigation).Include(u => u.IdDepartamentoNavigation).Include(u => u.IdPaisNavigation).Where(c => c.IdEmpresa == empresa.Id);
-                return View(await dbcontableContext.ToListAsync());
+                    var dbcontableContext = _context.Usuarios.Include(u => u.IdCiudadNavigation).Include(u => u.IdDepartamentoNavigation).Include(u => u.IdPaisNavigation);
+                    return View(await dbcontableContext.ToListAsync());
+                }
             }
-            return View();
+          
+            return RedirectToAction("Create","Empresas");
         }
 
         // GET: Usuarios/Details/5

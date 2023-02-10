@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
+using Microsoft.Data.SqlClient;
 
 namespace AppcontableCompueasys2._2.Controllers
 {

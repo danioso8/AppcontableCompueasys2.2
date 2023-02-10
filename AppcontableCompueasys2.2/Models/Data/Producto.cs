@@ -27,6 +27,8 @@ public partial class Producto
 
     public int? IdEmpresa { get; set; }
 
+   
+
     public virtual ICollection<Carrito> Carritos { get; } = new List<Carrito>();
 
     public virtual ICollection<DetalleCompra> DetalleCompras { get; } = new List<DetalleCompra>();

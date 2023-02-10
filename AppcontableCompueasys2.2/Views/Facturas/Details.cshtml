@@ -83,3 +83,111 @@
     <a asp-action="Edit" asp-route-id="@Model?.IdFactura">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+
+<div class="contenedor">
+
+    <table style="width:100%">
+        <tr>
+            <td>
+                <img src="" style="width: 120px;height:120px" />
+            </td>
+            <td style="text-align:right">
+                <table style="margin-right:0;margin-left:auto">
+                    <tr><td><p class="title2">NÚMERO VENTA</p></td></tr>
+                    <tr><td>model.IdFactura</td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table style="width:100%">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <p class="title">model.IdCliente.ToUpper()</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p class="text">Direccion: Empresa </p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">Correo: Empresa</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="text-align:right">
+                <table style="margin-right:0;margin-left:auto">
+                    <tr>
+                        <td><p class="title">CLIENTE</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="text">model.IdCliente.ToUpper()</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="text">Cedula</p></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+
+    <table class="tbproductos" style="width:100%">
+        <thead>
+            <tr>
+                <th class="tbth">Producto</th>
+                <th class="tbth" style="width:130px">Cantidad</th>
+                <th class="tbth" style="width:130px">Precio</th>
+                <th class="tbth" style="width:130px">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                //foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="td-item"><p class="item">DescripcionProducto</p></td>
+                        <td class="td-item"><p class="item">Cantidad</p></td>
+                        <td class="td-item"><p class="item">negocio.SimboloMoneda Precio</p></td>
+                        <td style="background-color:#EDF6F9"><p class="item">negocioSimboloMoneda Total</p></td>
+                    </tr>
+
+                }
+            }
+            <tr>
+                <td colspan="2" rowspan="3">
+                </td>
+                <td class="td-item">
+                    <p class="item-2">Sub Total</p>
+                </td>
+                <td class="item-3">
+                    <p>SubTotal</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="td-item">
+                    <p class="item-2">IGV</p>
+                </td>
+                <td class="item-3">
+                    <p>ImpuestoTotal</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="item-3">
+                    <p>Total</p>
+                </td>
+                <td class="item-3">
+                    <p>total venta</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
