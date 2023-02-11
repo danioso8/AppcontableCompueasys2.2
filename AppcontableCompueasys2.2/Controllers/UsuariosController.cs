@@ -19,7 +19,7 @@ namespace AppcontableCompueasys2._2.Controllers
         }
 
         // GET: Usuarios
-        public  Task<IActionResult> Index()
+        public  async Task<IActionResult> Index()
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -27,19 +27,19 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.admin = TempData["admin"];
             var company = ViewBag.company;
             var name = ViewBag.name;
-            var id = ViewBag.id;
+            var idUser = ViewBag.id;
             var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            TempData["idUser"] = id;
+            TempData["idUser"] = idUser;
             TempData["admin"] = admin;
 
 
 
 
-
-            var dbcontableContext =  _context.Usuarios.Find(id);
-                    return View( dbcontableContext);
+            var usuarios = _context.Usuarios;
+           
+                    return View(await usuarios.ToListAsync());
              
           
             
@@ -61,7 +61,7 @@ namespace AppcontableCompueasys2._2.Controllers
             var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            TempData["idUser"] = id;
+            TempData["idUser"] = idUser;
             TempData["admin"] = admin;
 
 
@@ -96,7 +96,7 @@ namespace AppcontableCompueasys2._2.Controllers
             var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            TempData["idUser"] = id;
+            TempData["idUser"] = idUser;
             TempData["admin"] = admin;
 
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
@@ -138,12 +138,15 @@ namespace AppcontableCompueasys2._2.Controllers
             return View(usuario);
         }
 
+
+
+
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombres,Apellidos,Correo,Contrasena,EsAdministrador,Activo,FechaRegistro,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Cedula,Nombres,Apellidos,Celular,Correo,Contrasena,EsAdministrador,Activo,FechaRegistro,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

@@ -7,9 +7,15 @@ public partial class Usuario
 {
     public int IdUsuario { get; set; }
 
+    public string? Cedula { get; set; }
+
     public string? Nombres { get; set; }
 
     public string? Apellidos { get; set; }
+
+    public string? Celular { get; set; }
+
+    public string? Direccion { get; set; }
 
     public string? Correo { get; set; }
 
@@ -19,9 +25,7 @@ public partial class Usuario
 
     public bool? Activo { get; set; }
 
-    public DateTime? FechaRegistro { get; set; }
-
-    public string? Direccion { get; set; }
+    public DateTime? FechaRegistro { get; set; }   
 
     public int? IdPais { get; set; }
 

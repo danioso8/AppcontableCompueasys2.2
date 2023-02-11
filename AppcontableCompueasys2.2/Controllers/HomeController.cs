@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
 using System.Data.Entity;
 using Microsoft.AspNetCore.Http;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CompueasysContable_2._2.Controllers
 {
@@ -53,8 +54,13 @@ namespace CompueasysContable_2._2.Controllers
         [Authorize]
         public IActionResult Dashboard()
         {
-           
-           
+
+            //var datosUser = new datosLayout();
+            //TempData["company"] = datosUser.company;
+            //TempData["name"] = datosUser.Name;
+            //TempData["idUser"] = datosUser.id;
+
+
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
             ViewBag.id = TempData["idUser"];
@@ -114,29 +120,32 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim("Empresa", usuario.NombreEmpresa!),
                    
                 };
-                
-              
+                var datosUser = new datosLayout();
+                datosUser.id = usuario.IdUsuario;
+                datosUser.Name = usuario.Nombres;
+                datosUser.company = usuario.NombreEmpresa;
+
                 TempData["idUser"] = usuario.IdUsuario;
                 TempData["name"] = usuario.Nombres;
                 TempData["company"] = usuario.NombreEmpresa;
-                var id = TempData["idUser"];
-                var admin = usuario.EsAdministrador;
-                ViewBag.IdUsuario = id;
-                ViewBag.company = TempData["company"];
-                ViewBag.name = TempData["name"];
-                var company = ViewBag.company;
-                var name = ViewBag.name;
-                TempData["company"] = company;
-                TempData["name"] = name;
-                TempData["idUser"] = id;
-                TempData["admin"] = admin;
+                //var id = TempData["idUser"];
+                //var admin = usuario.EsAdministrador;
+                //ViewBag.IdUsuario = id;
+                //ViewBag.company = TempData["company"];
+                //ViewBag.name = TempData["name"];
+                //var company = ViewBag.company;
+                //var name = ViewBag.name;
+                //TempData["company"] = company;
+                //TempData["name"] = name;
+                //TempData["idUser"] = id;
+                //TempData["admin"] = admin;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
                 //Cookies para mostrar datos en la vista principla
-                 var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+                 var empresa = _context.Empresas.Where(e => e.NombreEmpresa == usuario.NombreEmpresa).FirstOrDefault();
                 if (empresa == null)
                 {
                     return RedirectToAction("Create", "Empresas");

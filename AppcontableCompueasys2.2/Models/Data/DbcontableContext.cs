@@ -384,9 +384,15 @@ public partial class DbcontableContext : DbContext
             entity.ToTable("USUARIO");
 
             entity.Property(e => e.Activo).HasDefaultValueSql("((1))");
+            entity.Property(e => e.Cedula)
+               .HasMaxLength(50)
+               .IsUnicode(false);            
             entity.Property(e => e.Apellidos)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.Celular)
+               .HasMaxLength(15)
+               .IsUnicode(false);
             entity.Property(e => e.Contrasena)
                 .HasMaxLength(100)
                 .IsUnicode(false);
