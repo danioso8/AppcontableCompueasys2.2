@@ -19,23 +19,26 @@ namespace AppcontableCompueasys2._2.Controllers
         }
 
         // GET: Usuarios
-        public async Task<IActionResult> Index()
+        public  Task<IActionResult> Index()
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            ViewBag.id = TempData["id"];
-            int id = ViewBag.id;
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var id = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
 
 
-            
-              
 
-                    var dbcontableContext = _context.Usuarios.Find(id);
+
+
+            var dbcontableContext =  _context.Usuarios.Find(id);
                     return View( dbcontableContext);
              
           
@@ -50,11 +53,18 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
+
+
             if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
@@ -78,11 +88,17 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
+
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
             ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
@@ -96,11 +112,16 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
             if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
@@ -126,11 +147,16 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
 
 
             if (id != usuario.IdUsuario)
@@ -169,11 +195,16 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
             if (id == null || _context.Usuarios == null)
             {
                 return NotFound();
@@ -199,11 +230,16 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
+            var company = ViewBag.company;
             var name = ViewBag.name;
+            var idUser = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
-            ViewBag.id = TempData["id"];
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
             if (_context.Usuarios == null)
             {
                 return Problem("Entity set 'DbcontableContext.Usuarios'  is null.");

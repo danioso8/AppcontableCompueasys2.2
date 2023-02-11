@@ -115,16 +115,16 @@
                 </div>
                 <div class="card-body">
 
-                    <form>
+                    <form asp-action="Edit">
+                         <div class="form-group">
+                <label asp-for="Nombres" class="control-label"></label>
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
                         <div class="form-row">
                             <div class="form-group col-sm-12">
-                                <img id="imgFoto" src="https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300" class="rounded mx-auto d-block" style="width: 200px; height: 200px;">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-sm-12">
-                                <label for="txtNombre">Nombre</label>
-                                <input type="text" class="form-control form-control-sm" disabled id="txtNombre">
+                                <label asp-for="Model.Nombres" class="control-label"></label>
+                                <input  class="form-control" />
                             </div>
                         </div>
                         <div class="form-row">

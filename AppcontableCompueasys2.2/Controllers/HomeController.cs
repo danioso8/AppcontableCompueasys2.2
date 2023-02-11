@@ -57,12 +57,17 @@ namespace CompueasysContable_2._2.Controllers
            
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
+            ViewBag.id = TempData["idUser"];
+            ViewBag.admin = TempData["admin"];
             var company = ViewBag.company;
             var name = ViewBag.name;
+            var id = ViewBag.id;
+            var admin = ViewBag.admin;
             TempData["company"] = company;
             TempData["name"] = name;
+            TempData["idUser"] = id;
+            TempData["admin"] = admin;
 
-          
 
             return View();
         }
