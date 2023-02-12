@@ -185,7 +185,7 @@ namespace AppcontableCompueasys2._2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return View("Edit");
             }
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", usuario.IdCiudad);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", usuario.IdDepartamento);
