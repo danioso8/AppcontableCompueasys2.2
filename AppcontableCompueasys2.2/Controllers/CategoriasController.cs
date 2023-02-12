@@ -76,7 +76,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Activo,FechaRegistro,IdEmpresa")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Activo,FechaRegistro")] Categoria categoria)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

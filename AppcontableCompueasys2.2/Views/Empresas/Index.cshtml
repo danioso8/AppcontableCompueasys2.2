@@ -14,162 +14,97 @@
  @{
     if (Model != null)
     {
-        
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreEmpresa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DireecionEm)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NitORut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoOCelular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCiudadNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPaisNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPropietarioEmpresaNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreEmpresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DireecionEm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NitORut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoOCelular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPaisNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPropietarioEmpresaNavigation.IdUsuario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-            
-}
-       
-    </tbody>
-    
-</table>
+        <div class="container-fluid px-4">
+
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Tabla de Empresas
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre de la Empresa
+                                </th>
+                                <th>
+                                   Direeción
+                                </th>
+                                <th>
+                                    Nit O Rut
+                                </th>
+                                <th>
+                                   Telefono O Celular
+                                </th>
+                                <th>
+                                    Correo
+                                </th>
+                                <th >
+                                   Ciudad
+                                </th>
+                                <th >
+                                    Departamento
+                                </th>
+                                <th >
+                                   Pais
+                                </th>
+                                <th >
+                                   Propietario
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreEmpresa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DireecionEm)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NitORut)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TelefonoOCelular)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdPaisNavigation.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdPropietarioEmpresaNavigation.IdUsuario)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     }
 
  }
 
 
 
-<div class="container-fluid">
-
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 bg-second-primary">
-            <h6 class="m-0 font-weight-bold text-white">Datos del Negocio</h6>
-        </div>
-        <div class="card-body">
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <form>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-row">
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtNumeroDocumento">Numero Documento</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txtNumeroDocumento" name="Numero Documento">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtCorreo">Razon Social</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txtRazonSocial" name="Razon Social">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtCorreo">Correo</label>
-                                        <input type="email" class="form-control form-control-sm input-validar" id="txtCorreo" name="Correo">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtDireccion">Direccion</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txtDireccion" name="Direccion">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-6">
-                                        <label for="txTelefono">Telefono</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txTelefono" name="Telefono">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtImpuesto">% Impuesto</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txtImpuesto" name="Impuesto">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtSimboloMoneda">Simbolo Moneda</label>
-                                        <input type="text" class="form-control form-control-sm input-validar" id="txtSimboloMoneda" name="Simbolo Moneda">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="txtLogo">Logo</label>
-                                        <input class="form-control-file" type="file" id="txtLogo" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <img id="imgLogo" style="max-width:200px;" src="https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?w=300" class="rounded" alt="Logo">
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <button class="btn btn-success btn-sm" type="button" id="btnGuardarCambios">Guardar Cambios</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>

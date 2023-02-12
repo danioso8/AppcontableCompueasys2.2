@@ -46,7 +46,9 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return NotFound();
             }
+            
 
+           
             var factura = await _context.Facturas
                 .Include(f => f.IdClienteNavigation)
                 .Include(f => f.IdProductoNavigation)
@@ -61,6 +63,39 @@ namespace AppcontableCompueasys2._2.Controllers
             return View(factura);
         }
 
+
+        public async Task<IActionResult> imprimirFactura(int? id)
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            //if (id == null || _context.Facturas == null)
+            //{
+            //    return NotFound();
+            //}
+
+
+
+            //var factura = await _context.Facturas
+            //    .Include(f => f.IdClienteNavigation)
+            //    .Include(f => f.IdProductoNavigation)
+            //    .Include(f => f.IdTipoDePagoNavigation)
+            //    .Include(f => f.IdUsuarioNavigation)
+            //    .FirstOrDefaultAsync(m => m.IdFactura == id);
+            //if (factura == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return View();
+        }
+
+
+
         // GET: Facturas/Create
         public IActionResult Create()
         {
@@ -71,10 +106,10 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id");
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto");
-            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Id");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Nombre", "Id");
+            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
+            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
             return View();
         }
 
@@ -98,10 +133,10 @@ namespace AppcontableCompueasys2._2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto", factura.IdProducto);
-            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Id", factura.IdTipoDePago);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", factura.IdUsuario);
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
+            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
         }
 
@@ -125,10 +160,10 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto", factura.IdProducto);
-            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Id", factura.IdTipoDePago);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", factura.IdUsuario);
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
+            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
         }
 
@@ -171,10 +206,10 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto", factura.IdProducto);
-            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Id", factura.IdTipoDePago);
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", factura.IdUsuario);
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
+            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
         }
 

@@ -66,17 +66,20 @@ public partial class DbcontableContext : DbContext
 
         modelBuilder.Entity<Categoria>(entity =>
         {
-            entity.HasKey(e => e.IdCategoria).HasName("PK__CATEGORI__A3C02A1095AA2B61");
+            entity.HasKey(c => c.IdCategoria).HasName("PK__CATEGORI__A3C02A1095AA2B61");
 
             entity.ToTable("CATEGORIA");
 
-            entity.Property(e => e.Activo).HasDefaultValueSql("((1))");
-            entity.Property(e => e.Descripcion)
+            entity.Property(c => c.Activo).HasDefaultValueSql("((1))");
+            entity.Property(c => c.Descripcion)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.FechaRegistro)
+            entity.Property(c => c.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            
+
+
         });
 
         modelBuilder.Entity<Ciudad>(entity =>
@@ -86,6 +89,7 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Nombre)
                 .HasMaxLength(10)
                 .IsFixedLength();
+            
         });
 
         modelBuilder.Entity<Cliente>(entity =>
@@ -285,6 +289,7 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            
         });
 
         modelBuilder.Entity<Nomina>(entity =>
