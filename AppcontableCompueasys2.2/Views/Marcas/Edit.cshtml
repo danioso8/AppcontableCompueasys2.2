@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
 
-<h4>Marca</h4>
+
+<h4 class="pt-5">Marca</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,10 +24,15 @@
                 <input asp-for="Activo" class="form-control" />
                 <span asp-validation-for="Activo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group"hidden>
                 <label asp-for="FechaRegistro" class="control-label"></label>
                 <input asp-for="FechaRegistro" class="form-control" />
                 <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="IdEmpresa" class="control-label"></label>
+                <input asp-for="IdEmpresa" class="form-control" />
+                <span asp-validation-for="IdEmpresa" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

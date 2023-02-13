@@ -28,9 +28,17 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            return _context.Categoria != null ? 
-                          View(await _context.Categoria.ToListAsync()) :
-                          Problem("Entity set 'DbcontableContext.Categoria'  is null.");
+
+                       
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+            if (empresa.NombreEmpresa == company)
+            {
+
+                var dbcontableContext = _context.Categoria.Where(e => e.IdEmpresa == empresa.Id);
+                return View(await dbcontableContext.ToListAsync());
+            }
+            return View();
         }
 
         // GET: Categorias/Details/5
@@ -68,6 +76,10 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
+
+           
             return View();
         }
 
@@ -76,7 +88,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Activo,FechaRegistro")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Activo,FechaRegistro,IdEmpresa")] Categoria categoria)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -131,6 +143,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
             if (id != categoria.IdCategoria)
             {
                 return NotFound();

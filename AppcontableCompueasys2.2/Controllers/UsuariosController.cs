@@ -99,9 +99,9 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["idUser"] = idUser;
             TempData["admin"] = admin;
 
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
             return View();
         }
 
@@ -132,9 +132,9 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", usuario.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", usuario.IdDepartamento);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", usuario.IdPais);
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", usuario.IdCiudad);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", usuario.IdDepartamento);
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre", usuario.IdPais);
             return View(usuario);
         }
 
@@ -187,9 +187,9 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return View("Edit");
             }
-            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id", usuario.IdCiudad);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id", usuario.IdDepartamento);
-            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id", usuario.IdPais);
+            ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", usuario.IdCiudad);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", usuario.IdDepartamento);
+            ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre", usuario.IdPais);
             return View(usuario);
         }
 

@@ -24,16 +24,16 @@
                 <input asp-for="Activo" class="form-control" />
                 <span asp-validation-for="Activo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group"hidden>
                 <label asp-for="FechaRegistro" class="control-label"></label>
                 <input asp-for="FechaRegistro" class="form-control" />
                 <span asp-validation-for="FechaRegistro" class="text-danger"></span>
             </div>
-           @* <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdEmpresa" class="control-label"></label>
                 <input asp-for="IdEmpresa" class="form-control" />
                 <span asp-validation-for="IdEmpresa" class="text-danger"></span>
-            </div>*@
+           </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

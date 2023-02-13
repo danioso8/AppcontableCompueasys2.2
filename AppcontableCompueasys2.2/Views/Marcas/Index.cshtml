@@ -5,45 +5,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaRegistro)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaRegistro)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMarca">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMarca">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdMarca">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+
+<div class="container-fluid px-4 pt-5">
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="card-header py-3 bg-second-primary">
+                <h6 class="m-0 font-weight-bold text-white"> <i class="fas fa-table me-1"></i> Tabla de Categorias</h6>
+            </div>
+
+
+        </div>
+        <div class="card-body">
+
+            <table id="datatablesSimple" class="table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Activo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaRegistro)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.IdMarca">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.IdMarca">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.IdMarca">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <p>
     <a class="btn btn-danger" asp-action="Create">Create New</a>
 </p>

@@ -41,9 +41,6 @@ namespace CompueasysContable_2._2.Controllers
 
             _context = context;
 
-           
-
-
 
         }
 
@@ -120,21 +117,18 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim("Empresa", usuario.NombreEmpresa!),
                    
                 };
-                datosLayout datosUser = new datosLayout();
-                datosUser.id = usuario.IdUsuario;
-                datosUser.Name = usuario.Nombres;
-                datosUser.company = usuario.NombreEmpresa;
+                
 
                 TempData["idUser"] = usuario.IdUsuario;
                 TempData["name"] = usuario.Nombres;
                 TempData["company"] = usuario.NombreEmpresa;
-                //var id = TempData["idUser"];
-                //var admin = usuario.EsAdministrador;
-                //ViewBag.IdUsuario = id;
-                //ViewBag.company = TempData["company"];
-                //ViewBag.name = TempData["name"];
-                //var company = ViewBag.company;
-                //var name = ViewBag.name;
+                var id = TempData["idUser"];
+                var admin = usuario.EsAdministrador;
+                ViewBag.IdUsuario = id;
+                ViewBag.company = TempData["company"];
+                ViewBag.name = TempData["name"];
+                var company = ViewBag.company;
+                var name = ViewBag.name;
                 //TempData["company"] = company;
                 //TempData["name"] = name;
                 //TempData["idUser"] = id;

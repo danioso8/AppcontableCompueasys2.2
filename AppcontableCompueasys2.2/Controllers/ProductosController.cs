@@ -30,8 +30,15 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.id = TempData["id"];
 
 
-            var dbcontableContext = _context.Productos;
-            return View(await dbcontableContext.ToListAsync());
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+            if (empresa.NombreEmpresa == company)
+            {
+
+                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+                return View(await dbcontableContext.ToListAsync());
+            }
+            return View();
         }
 
         // GET: Productoes/Details/5
@@ -72,9 +79,12 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
-            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "IdMarca");
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
+
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion");            
+            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "Descripcion");
+
             return View();
         }
 
@@ -124,9 +134,9 @@ namespace AppcontableCompueasys2._2.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
             ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", producto.IdEmpresa);
-            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "IdMarca", producto.IdMarca);
+            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "Descripcion", producto.IdMarca);
             return View(producto);
         }
 
@@ -169,9 +179,9 @@ namespace AppcontableCompueasys2._2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "IdCategoria", producto.IdCategoria);
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id", producto.IdEmpresa);
-            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "IdMarca", producto.IdMarca);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", producto.IdEmpresa);
+            ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "Descripcion", producto.IdMarca);
             return View(producto);
         }
 
