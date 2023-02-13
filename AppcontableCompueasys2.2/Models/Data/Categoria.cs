@@ -13,11 +13,11 @@ public partial class Categoria
 
     public DateTime? FechaRegistro { get; set; }
 
-    //public int? IdEmpresa { get; set; }
+    public int? IdEmpresa { get; set; }
 
-    //public virtual Empresa? IdEmpresaNavigation { get; set; }
+    public virtual ICollection<Empresa> Empresa { get; } = new List<Empresa>();
 
     public virtual ICollection<Producto> Productos { get; } = new List<Producto>();
 
 
-}
+} 

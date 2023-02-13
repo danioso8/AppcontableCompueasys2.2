@@ -6,19 +6,17 @@
 }
 
 <div class="pt-4">
-    <h1>Clientes</h1>
+   
 
-    <p>
-        <a asp-action="Create">NUEVO CLIENTE</a>
-    </p>
-
+    
     <div class="container-fluid px-4">
 
 
         <div class="card mb-4">
             <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                Tabla de Clientes
+                <div class="card-header py-3 bg-second-primary">
+                <h6 class="m-0 font-weight-bold text-white"> <i class="fas fa-table me-1"></i> Tabla de Clientes</h6>
+                </div>
             </div>
             <div class="card-body">
                
@@ -75,3 +73,8 @@
     </div>
 
 </div>
+
+
+<p>
+    <a class="btn btn-danger" asp-action="Create">NUEVO CLIENTE</a>
+</p>

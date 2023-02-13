@@ -1,62 +1,49 @@
 ﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Producto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Productos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 
 
 <div class="container-fluid px-4">
 
 
-    <div class="card mb-4">
+    <div class="card mb-4 pt-5">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            Tabla de Productos
+            <div class="card-header py-3 bg-second-primary">
+                <h6 class="m-0 font-weight-bold text-white"> <i class="fas fa-table me-1"></i> Tabla de Productos</h6>
+                </div>
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
+
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Nombre)
+                            Codigo
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Descripcion)
+                           Nombre
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Precio)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Stock)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.RutaImagen)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Activo)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                           Descripcion
                         </th>
 
                         <th>
-                            Categoria
+                           Cantidad
                         </th>
-                        <th>
-                            Empresa
+
+                         <th>
+                           Precio
                         </th>
-                        <th>
-                            Marca
-                        </th>
-                        
+
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -64,27 +51,21 @@
                     {
                         <tr>
                             <td>
+                                @Html.DisplayFor(modelItem => item.IdProducto)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Nombre)
                             </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Descripcion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Precio)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Stock)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.RutaImagen)
+                                @Html.DisplayFor(modelItem => item.Precio)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Activo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FechaRegistro)
-                            </td>
-                           
 
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
@@ -94,17 +75,16 @@
                         </tr>
                     }
                 </tbody>
+
             </table>
         </div>
     </div>
 </div>
 
 
-
-
-
-   
-
+<p>
+    <a class="btn btn-danger" asp-action="Create">Create New</a>
+</p>
 
 
 

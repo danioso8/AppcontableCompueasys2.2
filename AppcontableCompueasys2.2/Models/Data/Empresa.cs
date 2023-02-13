@@ -41,5 +41,9 @@ public partial class Empresa
 
     public virtual ICollection<Nomina> Nominas { get; } = new List<Nomina>();
 
-    public virtual ICollection<Producto> Productos { get; } = new List<Producto>();
+    public HashSet<Categoria> Categorias { get; set; } = new HashSet<Categoria>();
+
+    public HashSet<Marca> Marcas { get; set; } = new HashSet<Marca>();
+
+    public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
 }

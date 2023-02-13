@@ -64,35 +64,35 @@ namespace AppcontableCompueasys2._2.Controllers
         }
 
 
-        public async Task<IActionResult> imprimirFactura(int? id)
-        {
-            ViewBag.company = TempData["company"];
-            ViewBag.name = TempData["name"];
-            string company = ViewBag.company;
-            var name = ViewBag.name;
-            TempData["company"] = company;
-            TempData["name"] = name;
-            ViewBag.id = TempData["id"];
-            //if (id == null || _context.Facturas == null)
-            //{
-            //    return NotFound();
-            //}
+        //public  Task<IActionResult> imprimirFactura(int? id)
+        //{
+        //    ViewBag.company = TempData["company"];
+        //    ViewBag.name = TempData["name"];
+        //    string company = ViewBag.company;
+        //    var name = ViewBag.name;
+        //    TempData["company"] = company;
+        //    TempData["name"] = name;
+        //    ViewBag.id = TempData["id"];
+        //    //if (id == null || _context.Facturas == null)
+        //    //{
+        //    //    return NotFound();
+        //    //}
 
 
 
-            //var factura = await _context.Facturas
-            //    .Include(f => f.IdClienteNavigation)
-            //    .Include(f => f.IdProductoNavigation)
-            //    .Include(f => f.IdTipoDePagoNavigation)
-            //    .Include(f => f.IdUsuarioNavigation)
-            //    .FirstOrDefaultAsync(m => m.IdFactura == id);
-            //if (factura == null)
-            //{
-            //    return NotFound();
-            //}
+        //    //var factura = await _context.Facturas
+        //    //    .Include(f => f.IdClienteNavigation)
+        //    //    .Include(f => f.IdProductoNavigation)
+        //    //    .Include(f => f.IdTipoDePagoNavigation)
+        //    //    .Include(f => f.IdUsuarioNavigation)
+        //    //    .FirstOrDefaultAsync(m => m.IdFactura == id);
+        //    //if (factura == null)
+        //    //{
+        //    //    return NotFound();
+        //    //}
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
 
@@ -106,7 +106,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Nombre", "Id");
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
             ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");

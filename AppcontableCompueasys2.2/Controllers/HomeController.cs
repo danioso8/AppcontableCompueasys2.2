@@ -55,7 +55,7 @@ namespace CompueasysContable_2._2.Controllers
         public IActionResult Dashboard()
         {
 
-            //var datosUser = new datosLayout();
+            //datosLayout datosUser = new datosLayout();
             //TempData["company"] = datosUser.company;
             //TempData["name"] = datosUser.Name;
             //TempData["idUser"] = datosUser.id;
@@ -120,7 +120,7 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim("Empresa", usuario.NombreEmpresa!),
                    
                 };
-                var datosUser = new datosLayout();
+                datosLayout datosUser = new datosLayout();
                 datosUser.id = usuario.IdUsuario;
                 datosUser.Name = usuario.Nombres;
                 datosUser.company = usuario.NombreEmpresa;

@@ -20,6 +20,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     option.AccessDeniedPath = "/";
 });
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
