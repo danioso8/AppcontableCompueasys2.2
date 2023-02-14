@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
+using HtmlAgilityPack;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
     public class ProductosController : Controller
     {
         private readonly DbcontableContext _context;
+        HtmlWeb oWeb = new HtmlWeb();
+        HtmlDocument doc = new HtmlDocument();
 
         public ProductosController(DbcontableContext context)
         {
@@ -104,6 +107,7 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.id = TempData["id"];
             if (ModelState.IsValid)
             {
+                
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
