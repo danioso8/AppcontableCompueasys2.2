@@ -1,4 +1,4 @@
-﻿@model AppcontableCompueasys2._2.Models.Data.Factura
+﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Producto>
 
 @{
     ViewData["Title"] = "Create";
@@ -34,29 +34,48 @@
                                 <div class="form-group col-sm-6">
                                     <input type="text" class="form-control form-control-sm" id="txtNombreCliente" placeholder="Nombre completo">
                                 </div>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Direccion">
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Ciudad">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Correo">
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Celular">
+                                </div>
+
+
                             </div>
                         </div>
+                       
+                       
+
                     </div>
                 </div>
             </div>
+
+            
+
             <div class="row">
+               
                 <div class="col-sm-12">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
                             <h6 class="m-0 font-weight-bold text-white">Productos</h6>
                         </div>
+                        <div class="col-sm-12 pt-4">
+                            <div class="card-boy">
+                                <input class="form-control" type="text" placeholder="Buscar Producto" id="buscarProducto" />
+                            </div>
+                        </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
-                                    @{
-                                        foreach (var item in ViewBag.Productos)
-                                        {
-                                            <select asp-for="IdProducto" class="form-control">
-                                                <option value="">item</option>
-                                             </select>
-                                        }
-                                    }
                                     
+
                                 </div>
                             </div>
                             <div class="row">
@@ -78,11 +97,17 @@
                                 </div>
                             </div>
                         </div>
+
+
+                   
+
+
                     </div>
                 </div>
             </div>
 
         </div>
+       
         <div class="col-sm-4">
 
             <div class="row">

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
+    [Authorize]
     public class TipoDePagosController : Controller
     {
         private readonly DbcontableContext _context;

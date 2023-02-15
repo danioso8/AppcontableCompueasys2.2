@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private readonly DbcontableContext _context;

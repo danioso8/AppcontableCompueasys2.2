@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
+    [Authorize]
     public class FacturasController : Controller
     {
         private readonly DbcontableContext _context;
@@ -99,6 +101,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas/Create
         public IActionResult Create()
         {
+
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
             string company = ViewBag.company;
@@ -106,14 +109,40 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
+
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
-            ViewBag.IdEmpresa = empresa.Id;
-           
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
-            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
-            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
+
+            if (empresa.NombreEmpresa == company)
+            {
+                ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
+                ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
+                ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
+                ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
+
+                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+                return View(dbcontableContext.ToList());
+            }
             return View();
+
+
+
+            //ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
+            //ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
+            //ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
+            //ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
+            //ViewBag.company = TempData["company"];
+            //ViewBag.name = TempData["name"];
+            //string company = ViewBag.company;
+            //var name = ViewBag.name;
+            //TempData["company"] = company;
+            //TempData["name"] = name;
+            //ViewBag.id = TempData["id"];
+            //var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            //ViewBag.IdEmpresa = empresa.Id;
+
+
+            //return View();
         }
 
         // POST: Facturas/Create
