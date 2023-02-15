@@ -15,7 +15,7 @@ public partial class Cliente
 
     public string? Cedula { get; set; }
 
-    public DateTime? Fecha { get; set; }
+    public DateTime? Fecha { get; set; } = default(DateTime?);
         
     public int? IdEmpresa { get; set; }
 

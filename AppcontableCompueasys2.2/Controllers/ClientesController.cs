@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.AspNetCore.Authorization;
 using AppcontableCompueasys2._2.Models;
+using Microsoft.VisualBasic;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
@@ -35,6 +36,7 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.id = TempData["id"];
 
              var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            
 
           
                 if (empresa.NombreEmpresa == company)
@@ -83,15 +85,16 @@ namespace AppcontableCompueasys2._2.Controllers
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
-            var company = ViewBag.company;
+            string company = ViewBag.company;
             var name = ViewBag.name;
             TempData["company"] = company;
             TempData["name"] = name;
-
-
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa");
+            
             ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");
             return View();
         }
@@ -109,11 +112,23 @@ namespace AppcontableCompueasys2._2.Controllers
             var name = ViewBag.name;
             TempData["company"] = company;
             TempData["name"] = name;
+
+            var usuarioBuscado = _context.Clientes.Where(e => e.Cedula == cliente.Cedula).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (usuarioBuscado != null)
+                {
+                    TempData["cliente"] = "Cliente ya existe";
+                }
+                else
+                {
+                    _context.Add(cliente);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                
+                
             }
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre", cliente.IdCiudad);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre", cliente.IdDepartamento);

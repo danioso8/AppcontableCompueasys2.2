@@ -10,6 +10,14 @@
 
 <h4>Cliente</h4>
 <hr />
+
+@if (TempData["cliente"] != null)
+{
+   
+    <div class="alert alert-danger" role="alert">
+        @TempData["cliente"]
+    </div>
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -35,14 +43,10 @@
                 <input asp-for="Cedula" class="form-control" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+           
+            <div class="form-group" hidden>
                 <label asp-for="IdEmpresa" class="control-label">Empresa</label>
-                <select asp-for="IdEmpresa" class ="form-control" asp-items="ViewBag.IdEmpresa"></select>
+                <input asp-for="IdEmpresa" class="form-control" value="@ViewBag.IdEmpresa">
             </div>
             <div class="form-group">
                 <label asp-for="IdPais" class="control-label">Pais</label>

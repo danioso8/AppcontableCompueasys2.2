@@ -50,8 +50,17 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: DetalleCompras/Create
         public IActionResult Create()
         {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Id");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
+            
             ViewData["IdFactura"] = new SelectList(_context.Facturas, "IdFactura", "IdFactura");
             ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "IdProducto");
             return View();

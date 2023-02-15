@@ -69,6 +69,8 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
             return View();
         }
 

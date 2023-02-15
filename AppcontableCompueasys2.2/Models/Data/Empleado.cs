@@ -27,6 +27,8 @@ public partial class Empleado
 
     public int? IdEmpresa { get; set; }
 
+    public DateTime FechaRegistro { get; set; }
+
     public virtual Ciudad? IdCiudadNavigation { get; set; }
 
     public virtual Departamento? IdDepartamentoNavigation { get; set; }

@@ -7,31 +7,25 @@
 
 
 
-
-
-
-
-
-
 <div class="container-fluid pt-4">
-                            <!-- DataTales Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3 bg-second-primary">
-                                    <h6 class="m-0 font-weight-bold text-white">Lista de Productos</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Nuevo Producto</button>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                                <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <tr>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-second-primary">
+            <h6 class="m-0 font-weight-bold text-white">Lista de Productos</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-circle"></i> Nuevo Producto</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row datatablesSimple">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="tbdata" cellspacing="0" style="width:100%">
+                        <thead>
+                            <tr>
+                            <tr>
                                 <th>
                                     Codigo
                                 </th>
@@ -50,12 +44,12 @@
                                     Precio
                                 </th>
 
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                              @foreach (var item in Model)
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @foreach (var item in Model)
                                 {
                                 <tr>
                                     <td>
@@ -75,29 +69,31 @@
                                             @Html.DisplayFor(modelItem => item.Precio)
                                     </td>
 
-                                    @*<td>
-                                        <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
-                                    </td>*@
-                                    @if (item.Activo == true){
-                                          <td><span class="badge badge-info">Activo</span></td>
+                                        @*<td>
+                                <a asp-action="Edit" asp-route-id="@item.IdProducto">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.IdProducto">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.IdProducto">Delete</a>
+                                </td>*@
+                                        @if (item.Activo == true)
+                                        {
+                                        <td><span class="badge badge-info">Activo</span></td>
                                         }
-                                        else{
-                                         <td><span class="badge badge-info">No activo</span></td>
+                                        else
+                                        {
+                                        <td><span class="badge badge-info">No activo</span></td>
                                         }
-                                    
-                                    
+
+
                                     <td>
                                         <button class="btn btn-primary btn-sm">
-                                            <i class="fas fa-pencil-alt">                                       
+                                            <i class="fas fa-pencil-alt">
                                             </i>
                                             <a asp-action="Edit" asp-route-id="@item.IdProducto" style="color:white">Edit</a>
 
                                         </button>
                                         <button class="btn btn-danger btn-sm">
                                             <i class="fas fa-trash-alt">
-                                                    
+
                                             </i>
                                             <a asp-action="Delete" asp-route-id="@item.IdProducto">Dele</a>
                                         </button>
@@ -105,94 +101,94 @@
                                 </tr>
                                 <tr>
                                 </tr>
-                                }                                                           
-                                                         
-                                                    </tbody>
-                                                </table>
-                                        </div>
+                                }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Modal-->
+    <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Detalle Producto</h6>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" value="0" id="txtId">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtCodigoBarra">Codigo Barra</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtCodigoBarra" name="Codigo Barra">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtMarca">Marca</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtMarca" name="Marca">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12">
+                                        <label for="txtDescripcion">Descripcion</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtDescripcion" name="Descripcion">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="cboCategoria">Categoria</label>
+                                        <select class="form-control form-control-sm" id="cboCategoria">
+                                            <option value="0">seleccionar</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtStock">Stock</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtStock" name="Stock">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtPrecio">Precio</label>
+                                        <input type="text" class="form-control form-control-sm input-validar" id="txtPrecio" name="Precio">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="cboEstado">Estado</label>
+                                        <select class="form-control form-control-sm" id="cboEstado">
+                                            <option value="1">Activo</option>
+                                            <option value="0">No Activo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6">
+                                        <label for="txtImagen">Imagen</label>
+                                        <input class="form-control-file" type="file" id="txtImagen" />
                                     </div>
                                 </div>
                             </div>
-
-                    <!--  Modal-->
-                    <div class="modal fade" id="modalData" tabindex="-1" role="dialog"aria-hidden="true" data-backdrop="static">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6>Detalle Producto</h6>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <input type="hidden" value="0" id="txtId">
-                                        <div class="row">
-                                            <div class="col-sm-8">
-                                                <div class="form-row">
-                                                        <div class="form-group col-sm-6">
-                                                            <label for="txtCodigoBarra">Codigo Barra</label>
-                                                            <input type="text" class="form-control form-control-sm input-validar" id="txtCodigoBarra" name="Codigo Barra">
-                                                        </div>
-                                                        <div class="form-group col-sm-6">
-                                                            <label for="txtMarca">Marca</label>
-                                                            <input type="text" class="form-control form-control-sm input-validar" id="txtMarca" name="Marca">
-                                                        </div>
-                                                </div>
-                                                <div class="form-row">
-                                                        <div class="form-group col-sm-12">
-                                                            <label for="txtDescripcion">Descripcion</label>
-                                                            <input type="text" class="form-control form-control-sm input-validar" id="txtDescripcion" name="Descripcion">
-                                                        </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="cboCategoria">Categoria</label>
-                                                        <select class="form-control form-control-sm" id="cboCategoria">
-                                                            <option value="0">seleccionar</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="txtStock">Stock</label>
-                                                        <input type="text" class="form-control form-control-sm input-validar" id="txtStock" name="Stock">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="txtPrecio">Precio</label>
-                                                        <input type="text" class="form-control form-control-sm input-validar" id="txtPrecio" name="Precio">
-                                                    </div>
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="cboEstado">Estado</label>
-                                                        <select class="form-control form-control-sm" id="cboEstado">
-                                                            <option value="1">Activo</option>
-                                                            <option value="0">No Activo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-sm-6">
-                                                        <label for="txtImagen">Imagen</label>
-                                                        <input class="form-control-file" type="file" id="txtImagen"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <img id="imgProducto" style="max-width:200px;" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300" class="rounded mx-auto d-block" alt="...">
-                                            </div>
-
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary btn-sm" type="button" id="btnGuardar">Guardar</button>
-                                    <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
-                                </div>
+                            <div class="col-sm-4">
+                                <img id="imgProducto" style="max-width:200px;" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300" class="rounded mx-auto d-block" alt="...">
                             </div>
-                        </div>
-                    </div>
 
+                        </div>
+                    </form>
                 </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" type="button" id="btnGuardar">Guardar</button>
+                    <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 
@@ -210,12 +206,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               
-                
+
+
                 <form asp-action="Create">
 
                     <div class="row container">
-                        
+
                         <div class="col-sm-6">
 
                             <div class="  ">
@@ -225,7 +221,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label Id="Nombre" class="control-label">Nombre</label>
-                                            <input Id="Nombre" class="form-control" />
+                                            <input Id="Nombre1" class="form-control" />
                                             <span Idr="Nombre" class="text-danger"></span>
 
                                         </div>
@@ -233,15 +229,22 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label Id="Descripcion" class="control-label">Descaripcion</label>
-                                            <input Id="Descripcion" class="form-control" />
+                                            <input Id="Descripcion1" class="form-control" />
                                             <span Id="Descripcion" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label Id="Precio" class="control-label">Precio</label>
-                                            <input Id="Precio" class="form-control" />
+                                            <input Id="Precio1" class="form-control" />
                                             <span Id="Precio" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12">
+                                            <label Id="cantidad" class="control-label">Cantidad</label>
+                                            <input Id="cantidad1" class="form-control" />
+                                            <span Id="cantidad" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -255,34 +258,41 @@
                             <div class=" ">
 
                                 <div class="">
+
+
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label Id="IdMarca" class="control-label">Marca</label>
-                                            <select Id="IdMarca" class="form-control" asp-items="@ViewBag.Marca"></select>
+                                            <select Id="IdMarca1" class="form-control" asp-items="@ViewBag.Id"></select>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label aId="IdCategoria" class="control-label">Categoria</label>
-                                            <select Id="IdCategoria" class="form-control" asp-items="@ViewBag.IdCategoria"></select>
+                                            <select Id="IdCategoria1" class="form-control"></select>
                                         </div>
                                     </div>
 
-                                    <div class="form-row" >
+                                    <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label Id="RutaImagen" class="control-label"></label>
-                                            <input Id="RutaImagen" class="form-control" />
+                                            <input Id="RutaImagen1" class="form-control" />
                                             <span Id="RutaImagen" class="text-danger"></span>
                                         </div>
                                     </div>
 
-                                    <div class="form-row" >
+                                    <div class="form-row">
                                         <div class="form-group col-sm-12">
-                                            <label Id="IdEmpresa" class="control-label">Empresa</label>
-                                            <input Id="IdEmpresa" class="form-control" value="@ViewBag.IdEmpresa">
+                                            <div class="form-group">
+                                             <label id="IdEmpresa" class="control-label">Empresa</label>
+                                              <input id="IdEmpresa" class="form-control" value="@ViewBag.IdEmpresa">
+                                             </div>
                                         </div>
                                     </div>
-                                   
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -292,7 +302,17 @@
                     </div>
                 </form>
             </div>
-           
+
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+

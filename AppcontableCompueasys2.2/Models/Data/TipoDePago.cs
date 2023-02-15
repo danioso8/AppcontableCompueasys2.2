@@ -9,5 +9,7 @@ public partial class TipoDePago
 
     public string? Descripcion { get; set; }
 
+    public int IdEmpresa { get; set; }
+
     public virtual ICollection<Factura> Facturas { get; } = new List<Factura>();
 }

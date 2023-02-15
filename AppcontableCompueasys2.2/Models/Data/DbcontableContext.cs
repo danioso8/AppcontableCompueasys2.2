@@ -107,7 +107,9 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Direccion)
                 .HasMaxLength(30)
                 .IsFixedLength();
-            entity.Property(e => e.Fecha).HasColumnType("date");
+            entity.Property(e => e.Fecha)
+           .HasDefaultValueSql("(getdate())")
+               .HasColumnType("datetime");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(10)
                 .IsFixedLength();
@@ -183,6 +185,9 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Telefono)
                 .HasMaxLength(15)
                 .IsFixedLength();
+            entity.Property(e => e.FechaRegistro)
+               .HasDefaultValueSql("(getdate())")
+               .HasColumnType("datetime");
 
             entity.HasOne(d => d.IdCiudadNavigation).WithMany(p => p.Empleados)
                 .HasForeignKey(d => d.IdCiudad)
@@ -224,6 +229,10 @@ public partial class DbcontableContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("Telefono o Celular");
+
+            entity.Property(e => e.FechaRegistro)
+               .HasDefaultValueSql("(getdate())")
+               .HasColumnType("datetime");
 
             entity.HasOne(d => d.IdCiudadNavigation).WithMany(p => p.Empresas)
                 .HasForeignKey(d => d.IdCiudad)

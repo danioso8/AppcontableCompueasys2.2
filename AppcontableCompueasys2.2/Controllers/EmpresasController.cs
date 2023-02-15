@@ -101,7 +101,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NombreEmpresa,DireecionEm,NitORut,TelefonoOCelular,Email,IdPais,IdDepartamento,IdCiudad,IdPropietarioEmpresa")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("NombreEmpresa,DireecionEm,NitORut,TelefonoOCelular,Email,IdPais,IdDepartamento,IdCiudad,IdPropietarioEmpresa,FechaRegistro")] Empresa empresa)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

@@ -81,10 +81,11 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Id");
-            ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "Id");
+            
             ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Id");
             return View();
         }
@@ -94,7 +95,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Cedula,Nombre,Direccion,Telefono,IdPais,IdDepartamento,IdCiudad,Email,Activo,IdEmpresa")] Empleado empleado)
+        public async Task<IActionResult> Create([Bind("Id,Cedula,Nombre,Direccion,Telefono,IdPais,IdDepartamento,IdCiudad,Email,Activo,IdEmpresa, FechaRegistro")] Empleado empleado)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

@@ -14,7 +14,7 @@ namespace AppcontableCompueasys2._2.Controllers
     {
         private readonly DbcontableContext _context;
         HtmlWeb oWeb = new HtmlWeb();
-        HtmlDocument doc = new HtmlDocument();
+       
 
         public ProductosController(DbcontableContext context)
         {
@@ -94,9 +94,33 @@ namespace AppcontableCompueasys2._2.Controllers
         // POST: Productoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("IdProducto,Nombre,Descripcion,IdMarca,IdCategoria,Precio,Stock,RutaImagen,Activo,FechaRegistro,IdEmpresa")] Producto producto)
+        //{
+        //    ViewBag.company = TempData["company"];
+        //    ViewBag.name = TempData["name"];
+        //    string company = ViewBag.company;
+        //    var name = ViewBag.name;
+        //    TempData["company"] = company;
+        //    TempData["name"] = name;
+        //    ViewBag.id = TempData["id"];
+        //    if (ModelState.IsValid)
+        //    {
+                
+        //        _context.Add(producto);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+        //    ViewData["IdEmpresa"] = new SelectList(_context.Empresas, "Id", "NombreEmpresa", producto.IdEmpresa);
+        //    ViewData["IdMarca"] = new SelectList(_context.Marcas, "IdMarca", "Descripcion", producto.IdMarca);
+        //    return View(producto);
+        //}
+
+         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProducto,Nombre,Descripcion,IdMarca,IdCategoria,Precio,Stock,RutaImagen,Activo,FechaRegistro,IdEmpresa")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Nombre1,Descripcion1,IdMarca1,IdCategoria1,Precio1,Stock1,RutaImagen1,Activo1,IdEmpresa1")] Producto producto)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -105,6 +129,9 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
+
+            
             if (ModelState.IsValid)
             {
                 

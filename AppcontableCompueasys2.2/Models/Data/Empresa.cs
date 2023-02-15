@@ -17,6 +17,8 @@ public partial class Empresa
 
     public string? Email { get; set; }
 
+    public DateTime FechaRegistro { get; set; }
+
     public int? IdPais { get; set; }
 
     public int? IdDepartamento { get; set; }

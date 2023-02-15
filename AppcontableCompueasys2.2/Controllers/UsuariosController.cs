@@ -99,6 +99,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["idUser"] = idUser;
             TempData["admin"] = admin;
 
+
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Nombre");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
             ViewData["IdPais"] = new SelectList(_context.Pais, "Id", "Nombre");

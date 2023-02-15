@@ -106,7 +106,9 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            ViewData["Productos"] = new SelectList(_context.Productos, "Id", "Nombre");
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.IdEmpresa = empresa.Id;
+           
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
             ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
