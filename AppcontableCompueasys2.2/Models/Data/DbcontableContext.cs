@@ -107,6 +107,9 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Direccion)
                 .HasMaxLength(30)
                 .IsFixedLength();
+            entity.Property(e => e.Correo)
+                .HasMaxLength(100)
+                .IsFixedLength();
             entity.Property(e => e.Fecha)
            .HasDefaultValueSql("(getdate())")
                .HasColumnType("datetime");

@@ -14,92 +14,147 @@
 
 
 <div class="container-fluid">
-
+    
     <div class="row">
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
-                            <h6 class="m-0 font-weight-bold text-white">Cliente</h6>
+
+                            <form method="post" asp-action="buscarCliente" asp-controller="Facturas">
+                                <div class="">
+                                    <h6 class="m-0 font-weight-bold float-left text-white">Cliente</h6>
+                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                                    <input class="float-right" type="text" id="DaB" name="DaB" placeholder="Buscar Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+
+                                </div>
+                            </form>
                         </div>
-                        <div class="card-body">
-                            <div class="form-row">
-                                <div class="form-group col-sm-3">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Codigo">
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="documento">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="txtNombreCliente" placeholder="Nombre completo">
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Direccion">
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Ciudad">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Correo">
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" placeholder="Celular">
-                                </div>
+                        @{
+                            if (TempData["mensaje"] != null)
+                            {
 
 
-                            </div>
-                        </div>
-                       
-                       
+                                <div class="alert alert-danger" role="alert">
+                                    @TempData["mensaje"]
+                                </div>
+                            }
+                            else
+                            {
+                                if (@ViewBag.cedula !=null)
+                                {
+                                       <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" value="@ViewBag.iduser" id="txtDocumentoCliente">
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.cedula">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <input type="text" class="form-control form-control-sm" id="txtNombreCliente" value="@ViewBag.nombre" p>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.direccion">
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.ciudad">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.correo">
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.celular">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                }
+                            }
+                        }
+
+
 
                     </div>
                 </div>
             </div>
 
-            
+           
 
             <div class="row">
-               
+
                 <div class="col-sm-12">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
-                            <h6 class="m-0 font-weight-bold text-white">Productos</h6>
+                            <form method="post" asp-action="buscarProducto" asp-controller="Facturas">
+                                <div class="">
+                                    <h6 class="m-0 font-weight-bold float-left text-white">Producto</h6>
+                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                                    <input class="float-right" type="text" id="DaB" name="DaB" placeholder="Buscar producto" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+
+                                </div>
+                            </form>
                         </div>
                         <div class="col-sm-12 pt-4">
                             <div class="card-boy">
-                                <input class="form-control" type="text" placeholder="Buscar Producto" id="buscarProducto" />
+                                <form method="post" asp-action="buscarProducto" asp-controller="Facturas">
+                                    <select id ="DaB" name="DaB"  class="form-control" type="text" >
+                                    <option>Selecione un producto</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option Precio="@item.Precio" value="@item.IdProducto">@item.Nombre</option>
+                                    }
+                                </select>
+                                <button class="btn-primary btn-primary" type="submit">Selecionar Producto</button>
+
+                                </form>
+
                             </div>
                         </div>
+                         
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
-                                    
-
                                 </div>
                             </div>
+                                   
                             <div class="row">
                                 <div class="col-sm-12">
+
                                     <table class="table table-striped table-sm" id="tbProducto">
                                         <thead>
                                             <tr>
                                                 <th></th>
+                                                <th>Codigo</th>
                                                 <th>Producto</th>
                                                 <th>Cantidad</th>
                                                 <th>Precio</th>
-                                                <th>Total</th>
+                                               
                                             </tr>
                                         </thead>
-                                        <tbody>
-
+                                        <tbody >
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.IdProducto</td>
+                                                    <td>@item.Nombre</td>
+                                                    <td>@item.Stock</td>
+                                                    <td>@item.Precio</td>
+                                                </tr>
+                                            }
+                                            
+                                                                                        
                                         </tbody>
                                     </table>
+                                   
                                 </div>
                             </div>
                         </div>
+                       
 
 
-                   
 
 
                     </div>
@@ -107,7 +162,7 @@
             </div>
 
         </div>
-       
+
         <div class="col-sm-4">
 
             <div class="row">
@@ -122,8 +177,7 @@
                                     <label class="input-group-text" for="cboTipoDocumentoVenta">Tipo</label>
                                 </div>
                                 <select class="custom-select" id="cboTipoDocumentoVenta">
-                                    <option value="1">Boleta</option>
-                                    <option value="2">Factura</option>
+                                   <option value="2">Factura</option>
                                 </select>
                             </div>
                             <div class="input-group input-group-sm mb-3">
@@ -163,7 +217,7 @@
             </div>
         </div>
     </div>
-
+   
 
 
 </div>

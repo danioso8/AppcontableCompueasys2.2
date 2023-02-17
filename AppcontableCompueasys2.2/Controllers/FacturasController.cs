@@ -110,6 +110,18 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
 
+            //Cargando datos del cliente
+            ViewBag.iduser = TempData["iduser"];
+            ViewBag.cedula = TempData["cedula"];
+            ViewBag.nombre = TempData["nombre"];
+            ViewBag.direccion = TempData["direccion"];
+            ViewBag.ciudad = TempData["ciudad"];
+            ViewBag.correo = TempData["correo"];
+            ViewBag.celular = TempData["celular"];
+
+
+            
+
 
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
@@ -120,7 +132,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
                 ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
 
-                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+                var dbcontableContext = _context.Productos.Where(p => p.IdEmpresa == empresa.Id);
                 return View(dbcontableContext.ToList());
             }
             return View();
@@ -170,6 +182,48 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
+        }
+
+        [HttpPost]
+        public IActionResult BuscarCliente(string DaB)
+        {
+            var cliente = _context.Clientes.Where(c => c.Id == Convert.ToInt32(DaB) || c.Cedula == DaB || c.Nombre == DaB).FirstOrDefault();
+            if (cliente !=null)
+            {
+               TempData["iduser"] = cliente.Id;
+                TempData["cedula"] = cliente.Cedula;
+                TempData["nombre"] = cliente.Nombre;
+                TempData["direccion"] = cliente.Direccion;
+                TempData["ciudad"] = cliente.IdCiudad;
+                TempData["correo"] = cliente.Correo;
+                TempData["celular"] = cliente.Celular;
+            }
+            else
+            {
+                TempData["mensaje"] = "Cliente no encontrado";
+               
+            }
+            return RedirectToAction(nameof(Create));
+
+        }
+        
+        [HttpPost]
+        public IActionResult buscarProducto(string DaB)
+        {
+            var producto = _context.Productos.Where(c => c.IdProducto == Convert.ToInt32(DaB) || c.Nombre == DaB).FirstOrDefault();
+            if (producto !=null)
+            {
+                
+                return View(producto);
+
+            }
+            else
+            {
+                TempData["mensaje"] = "Producto no encontrado";
+               
+            }
+            return RedirectToAction(nameof(Create));
+
         }
 
         // GET: Facturas/Edit/5

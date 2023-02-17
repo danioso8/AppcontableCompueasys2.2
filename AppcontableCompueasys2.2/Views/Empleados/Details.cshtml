@@ -41,6 +41,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Activo)
         </dt>
@@ -48,28 +54,24 @@
             @Html.DisplayFor(model => model.Activo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCiudadNavigation)
+           Ciudad
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCiudadNavigation.Id)
+            @Html.DisplayFor(model => model.IdCiudadNavigation.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+            Departamento
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDepartamentoNavigation.Id)
+            @Html.DisplayFor(model => model.IdDepartamentoNavigation.Nombre)
         </dd>
+       
+       
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdEmpresaNavigation)
+           Pais
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdEmpresaNavigation.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdPaisNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdPaisNavigation.Id)
+            @Html.DisplayFor(model => model.IdPaisNavigation.Nombre)
         </dd>
     </dl>
 </div>
