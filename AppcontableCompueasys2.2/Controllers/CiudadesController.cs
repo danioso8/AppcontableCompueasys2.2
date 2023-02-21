@@ -30,9 +30,10 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
-            return _context.Ciudads != null ? 
+            return _context.Ciudads != null ?
                           View(await _context.Ciudads.ToListAsync()) :
                           Problem("Entity set 'DbcontableContext.Ciudads'  is null.");
+
         }
 
         // GET: Ciudads/Details/5

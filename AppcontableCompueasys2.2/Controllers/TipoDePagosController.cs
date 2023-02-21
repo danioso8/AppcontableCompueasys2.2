@@ -81,7 +81,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descripcion")] TipoDePago tipoDePago)
+        public async Task<IActionResult> Create([Bind("Id,Descripcion,IdEmpresa")] TipoDePago tipoDePago)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -97,6 +97,12 @@ namespace AppcontableCompueasys2._2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(tipoDePago);
+        }
+        public IActionResult Get()
+        {
+           
+            var tipoP = _context.TipoDePagos;
+            return StatusCode(StatusCodes.Status200OK, tipoP);
         }
 
         // GET: TipoDePagoes/Edit/5
