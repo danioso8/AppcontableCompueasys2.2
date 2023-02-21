@@ -38,8 +38,9 @@ $(document).ready(function () {
      let _Producto = $(this).find("option:selected")
      
         
+        $("#txtSubTotal").val(_Producto.attr("Precio"))
         let total = $("#txtTotal").val() || 0;
-     
+       
         $("#tablaProducto").append(`
                                     <tr>
                                       <td>${""}</td>
@@ -50,9 +51,11 @@ $(document).ready(function () {
                                       <td>${_Producto.attr("Precio")}</td>
                                     </tr>`);
         
-       
-        let sumaT = parseInt(total) + parseInt(_Producto.attr("Precio"));
-        $("#txtTotal").text(sumaT);
+        
+        let submaT = parseInt(total) + parseInt(_Producto.attr("Precio"));
+        $("#txtSubTotal").val(submaT);
+        let sumaT = parseInt(total) + parseInt(_Producto.attr("Precio")); 
+        $("#txtTotal").val(sumaT);
         con++;
     });
     
