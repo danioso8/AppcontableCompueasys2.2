@@ -40,12 +40,13 @@
 
 
 
-$(document).redy(function () {
-    alert('hello')
-    consol.log('iniciando');
+$(document).ready(function () {
+    
+    
     var con = 0;
-    $('#DaB').on('change', function () {
-
+    alert('hello')
+    $('.DaB').on('change', function () {
+        
         let _Producto = $(this).find("option:selected").text();
         let total = $("#txtTotal").val() || 0;
 
@@ -61,5 +62,5 @@ $(document).redy(function () {
         $("#txtTotal").text(sumaT);
         con++;
     });
-    consol.log('terminando');
+    
     });
