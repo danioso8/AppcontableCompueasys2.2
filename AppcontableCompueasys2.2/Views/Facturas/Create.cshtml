@@ -2,7 +2,8 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    
+ }
 
 
 <h1 class="pt-5">Factura</h1>
@@ -90,7 +91,7 @@
                             <form method="post" asp-action="buscarProducto" asp-controller="Facturas">
                                 <div class="">
                                     <h6 class="m-0 font-weight-bold float-left text-white">Producto</h6>
-                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+                                    <button class="float-right btn btn-primary"  id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                                     <input class="float-right" type="text" id="DaB" name="DaB" placeholder="Buscar producto" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
 
                                 </div>
@@ -98,17 +99,27 @@
                         </div>
                         <div class="col-sm-12 pt-4">
                             <div class="card-boy">
-                                <form method="post" asp-action="buscarProducto" asp-controller="Facturas">
-                                    <select id ="DaB" name="DaB"  class="form-control" type="text" >
+                                
+                                    <select  id="DaB" name="DaB" class="form-control" type="text">
                                     <option>Selecione un producto</option>
-                                    @foreach (var item in Model)
-                                    {
-                                        <option Precio="@item.Precio" value="@item.IdProducto">@item.Nombre</option>
-                                    }
-                                </select>
-                                <button class="btn-primary btn-primary" type="submit">Selecionar Producto</button>
 
-                                </form>
+
+                                      
+                                            @foreach (var item in Model)
+                                            {
+
+
+                                               
+                                                        <option Precio="@item.Precio" value="@item.IdProducto">@item.Nombre</option>
+                                                        
+                                                   
+                                       
+                                        }
+                                    
+                                </select>
+                                
+
+                               
 
                             </div>
                         </div>
@@ -134,16 +145,7 @@
                                             </tr>
                                         </thead>
                                         <tbody >
-                                            @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    <td>@item.IdProducto</td>
-                                                    <td>@item.Nombre</td>
-                                                    <td>@item.Stock</td>
-                                                    <td>@item.Precio</td>
-                                                </tr>
-                                            }
-                                            
+                                                                                        
                                                                                         
                                         </tbody>
                                     </table>
@@ -225,5 +227,29 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
 <script src="~/js/facturas.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+@*<script>
+    $(document).redy(function () {
+    var con = 0;
+        $('#DaB').on('change', function () {
+
+        let _Producto = $(this).find("option:selected").text();
+        let total = $("#txtTotal").val() || 0;
+        
+        $("#tbProducto").append(`
+          <tr>
+              <td>${_Producto.val()}</td>
+              <td>${_Producto.text()}</td>
+              <td>${_Producto.attr("Precio")}</td>
+
+         </tr>
+        `);
+        let sumaT = parseInt(total) + parseInt(_Producto.attr("Precio"));
+        $("#txtTotal").text(sumaT);
+        con++;
+    }
+
+ }
+</script>*@
