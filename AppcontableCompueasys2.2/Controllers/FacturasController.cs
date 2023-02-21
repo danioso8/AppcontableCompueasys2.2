@@ -210,11 +210,11 @@ namespace AppcontableCompueasys2._2.Controllers
         [HttpPost]
         public IActionResult buscarProducto(string DaB)
         {
-            var producto =  _context.Productos.Where(c => c.IdProducto == Convert.ToInt32(DaB) || c.Nombre == DaB).FirstOrDefault();
+            var producto = _context.Productos.Where(c => c.IdProducto == Convert.ToInt32(DaB) || c.Nombre == DaB);
             if (producto !=null)
             {
-                var listaProductos = _context.Productos.ToList();
-                return View( listaProductos, producto);
+                
+                return View(nameof(Create),producto.ToList());
 
             }
             else
