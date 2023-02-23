@@ -23,7 +23,7 @@ namespace AppcontableCompueasys2._2.Controllers
             _context = context;
         }
 
-        // GET: Productoes
+        // GET: Productos
         public async Task<IActionResult> Index()
         {
             ViewBag.company = TempData["company"];
@@ -37,16 +37,33 @@ namespace AppcontableCompueasys2._2.Controllers
 
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
-            if (empresa.NombreEmpresa == company)
-            {
+            
 
                 var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
                 return View(await dbcontableContext.ToListAsync());
-            }
-            return View();
+          
         }
 
-        // GET: Productoes/Details/5
+
+        // GET: Productos
+        public IActionResult Get()
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+
+            var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+
+            return StatusCode(StatusCodes.Status200OK, dbcontableContext);
+        }
+
+        // GET: Productos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             ViewBag.company = TempData["company"];

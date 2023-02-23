@@ -29,7 +29,7 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-blue">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3 text-warning" href="index.html">@ViewBag.company</a>
+        <a class="navbar-brand ps-3 text-warning" href="@Url.Action("Edit","Empresas")" asp-route-="@ViewData["idEmpresa"]">@ViewBag.company</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 text-light order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -42,9 +42,12 @@
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                @if (ViewBag.admin == true)
+                {
+                    
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
-                        <a class="dropdown-item" asp-action="Edit" asp-controller="Usuarios" asp-route-id="@ViewBag.id">
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Usuarios">
                         <i class="fas fa-user fa-fw"></i>
                             Perfil Usuario
                         </a>
@@ -54,6 +57,25 @@
                             <i class="fas fa-person-booth"></i>
                         Cerrar Sesion</a></li>
                 </ul>
+                }
+                else
+                {
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" asp-action="Edit" asp-controller="Usuarios" asp-route-id="@ViewBag.id">
+                                <i class="fas fa-user fa-fw"></i>
+                                Perfil Usuario
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action("CerrarSesion","Home")">
+                                <i class="fas fa-person-booth"></i>
+                                Cerrar Sesion
+                            </a>
+                        </li>
+                    </ul>
+                }
             </li>
         </ul>
     </nav>
@@ -192,8 +214,8 @@
     
 
     <!-- SOLO ES DE EJEMPLO - IGNORAR -->
-    @*<script src="~/js/vistas/chart-bar-demo.js"></script>
-    <script src="~/js/vistas/chart-pie-demo.js"></script>*@
+    <script src="~/js/vistas/chart-bar-demo.js"></script>
+    <script src="~/js/vistas/chart-pie-demo.js"></script>
     
     @RenderSection("Scripts", required: false)
 

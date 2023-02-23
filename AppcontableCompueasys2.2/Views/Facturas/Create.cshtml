@@ -1,9 +1,12 @@
-﻿@model IEnumerable<AppcontableCompueasys2._2.Models.Data.Producto>
+﻿@model IEnumerable< AppcontableCompueasys2._2.Models.Data.Producto>
+
+
+
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    
- }
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+    var myList = TempData["listaProductos"] as List<string>;
+}
 
 
 <h1 class="pt-5">Factura</h1>
@@ -100,25 +103,21 @@
                         <div class="col-sm-12 pt-4">
                             <div class="card-boy">
 
-                                <select id="ProductoSeleccionado" name="ProductoSeleccionado" class="form-control" type="text">
-                                    <option>Selecione un producto</option>
 
-                                   
-                                      
-                                            @foreach (var item in Model)
-                                            {
+                                <select id="ProductoSeleccionado" name="ProductoSeleccionado"  class="form-control" type="text">
+                                    <option>Seleccione un producto</option>
+                                    @foreach (var Producto in Model)
+                                    {
+                                        <option value="@Producto.IdProducto">@Producto.Nombre</option>
+                                    }
 
 
-                                               
-                                                        <option Precio="@item.Precio" value="@item.IdProducto">@item.Nombre</option>
-                                                        
-                                                   
-                                       
-                                        }
-                                    
                                 </select>
+                                    
+                              
+                                
                                
-
+ 
                                
 
                             </div>

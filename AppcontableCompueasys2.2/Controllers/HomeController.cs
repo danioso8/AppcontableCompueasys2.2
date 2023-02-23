@@ -115,7 +115,8 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim(ClaimTypes.Name, usuario.Nombres!),
                     new Claim("correo", usuario.Correo!),
                     new Claim("Empresa", usuario.NombreEmpresa!),
-                   
+                    
+
                 };
                 
 
@@ -129,10 +130,10 @@ namespace CompueasysContable_2._2.Controllers
                 ViewBag.name = TempData["name"];
                 var company = ViewBag.company;
                 var name = ViewBag.name;
-                //TempData["company"] = company;
-                //TempData["name"] = name;
-                //TempData["idUser"] = id;
-                //TempData["admin"] = admin;
+                TempData["company"] = company;
+                TempData["name"] = name;
+                TempData["idUser"] = id;
+                TempData["admin"] = admin;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -145,7 +146,7 @@ namespace CompueasysContable_2._2.Controllers
                     return RedirectToAction("Create", "Empresas");
 
                 }
-                
+                TempData["idEmpresa"] = empresa.Id;
                 return RedirectToAction("Dashboard", "Home");
 
 

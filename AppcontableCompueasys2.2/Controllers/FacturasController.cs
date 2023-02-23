@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
@@ -23,6 +24,9 @@ namespace AppcontableCompueasys2._2.Controllers
         // GET: Facturas
         public async Task<IActionResult> Index()
         {
+
+            
+
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
             string company = ViewBag.company;
@@ -30,9 +34,23 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefaultAsync();
+
+            //Obtener datos de la vista
+            //(IFormColletion form)
+            // int idProductoSeleccionado = int.Parse(form["producto"]);
+            //var productoSeleccionado = _dbContext.Productos.FirstOrDefault(p => p.Id == idProductoSeleccionado);
+
+
+
+
             var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdProductoNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
             return View(await dbcontableContext.ToListAsync());
         }
+
+
+
 
         // GET: Facturas/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -99,6 +117,10 @@ namespace AppcontableCompueasys2._2.Controllers
 
 
         // GET: Facturas/Create
+
+
+
+
         public IActionResult Create()
         {
 
@@ -120,20 +142,26 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.celular = TempData["celular"];
 
 
-            
+           
+
 
 
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
             if (empresa.NombreEmpresa == company)
             {
+                //var productos = _context.Productos.Where(p => p.IdEmpresa == empresa.Id).FirstOrDefaultAsync();
+                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+
+
+                
                 ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
                 ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
                 ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
                 ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
+               
 
-                var dbcontableContext = _context.Productos.Where(p => p.IdEmpresa == empresa.Id);
-                return View(dbcontableContext.ToList());
+                return View(dbcontableContext);
             }
             return View();
 
@@ -157,6 +185,10 @@ namespace AppcontableCompueasys2._2.Controllers
             //return View();
         }
 
+      
+        
+        
+        
         // POST: Facturas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -181,9 +213,15 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
-            return View(factura);
+
+            List<string> listaProductos = ViewBag.listaProductos;
+
+            return View(factura.ToString(), listaProductos);
         }
 
+        
+        
+        
         [HttpPost]
         public IActionResult BuscarCliente(string DaB)
         {
@@ -208,21 +246,28 @@ namespace AppcontableCompueasys2._2.Controllers
         }
         
         [HttpPost]
-        public IActionResult buscarProducto(string DaB)
+        public IActionResult buscarProducto(string ProductoSeleccionado)
         {
-            var producto = _context.Productos.Where(c => c.IdProducto == Convert.ToInt32(DaB) || c.Nombre == DaB);
-            if (producto !=null)
-            {
-                
-                return View(nameof(Create),producto.ToList());
 
-            }
-            else
-            {
-                TempData["mensaje"] = "Producto no encontrado";
-               
-            }
-            return RedirectToAction(nameof(Create));
+
+            ViewBag.Nombre = ProductoSeleccionado;
+            List<string> listaProductos = ViewBag.listaProductos;
+            return View(listaProductos);
+
+
+            //var producto = _context.Productos.Where(c => c.IdProducto == Convert.ToInt32(ProductoSeleccionado) || c.Nombre == ProductoSeleccionado);
+            //if (producto !=null)
+            //{
+
+            //    return View(nameof(Create));
+
+            //}
+            //else
+            //{
+            //    TempData["mensaje"] = "Producto no encontrado";
+
+            //}
+            //return RedirectToAction(nameof(Create));
 
         }
 

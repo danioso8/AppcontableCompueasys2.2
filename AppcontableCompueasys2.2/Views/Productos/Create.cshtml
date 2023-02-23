@@ -37,6 +37,13 @@
             <span asp-validation-for="Descripcion" class="text-danger"></span>
         </div>
     </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label asp-for="Stock" class="control-label"></label>
+                            <input asp-for="Stock" class="form-control" />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+                    </div>
     <div class="form-row">
         <div class="form-group col-sm-12">
             <label asp-for="Precio" class="control-label"></label>
@@ -76,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="form-row" hidden>
+                <div class="form-row" >
                     <div class="form-group col-sm-12">
                         <label asp-for="IdEmpresa" class="control-label">Empresa</label>
                         <input asp-for="IdEmpresa" class="form-control" value="@ViewBag.IdEmpresa">
@@ -94,9 +101,7 @@
 
 
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

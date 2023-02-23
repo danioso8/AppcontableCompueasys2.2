@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Authorization;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
@@ -98,11 +99,21 @@ namespace AppcontableCompueasys2._2.Controllers
             }
             return View(tipoDePago);
         }
-        public IActionResult Get()
+        public  IActionResult Get()
         {
-           
-            var tipoP = _context.TipoDePagos;
-            return StatusCode(StatusCodes.Status200OK, tipoP);
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+          
+                var dbcontableContext =  _context.Categoria.Where(e => e.IdEmpresa == empresa.Id);
+              
+            return StatusCode( StatusCodes.Status200OK,  dbcontableContext);
         }
 
         // GET: TipoDePagoes/Edit/5
