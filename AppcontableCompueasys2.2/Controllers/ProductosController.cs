@@ -37,9 +37,9 @@ namespace AppcontableCompueasys2._2.Controllers
 
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
-            
+            ViewBag.IdEmpresa = empresa.Id;
 
-                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+            var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
                 return View(await dbcontableContext.ToListAsync());
           
         }
@@ -59,7 +59,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
 
             var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
-
+            ViewBag.IdEmpresa = empresa.Id;
             return StatusCode(StatusCodes.Status200OK, dbcontableContext);
         }
 
@@ -139,7 +139,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
          [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre1,Descripcion1,IdMarca1,IdCategoria1,Precio1,Stock1,RutaImagen1,Activo1,IdEmpresa1")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Nombre,Descripcion,IdMarca,IdCategoria,Precio,Stock,Activo1,IdEmpresa")] Producto producto)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

@@ -108,7 +108,7 @@
                                     <option>Seleccione un producto</option>
                                     @foreach (var Producto in Model)
                                     {
-                                        <option value="@Producto.IdProducto">@Producto.Nombre</option>
+                                        <option precio="@Producto.Precio" value="@Producto.IdProducto">@Producto.Nombre   @Producto.Descripcion</option>
                                     }
 
 

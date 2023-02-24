@@ -42,6 +42,23 @@ namespace AppcontableCompueasys2._2.Controllers
             return View();
         }
 
+
+        public ActionResult Get()
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+
+            var marcas = _context.Marcas.Where(m => m.IdEmpresa == empresa.Id);
+            return StatusCode(StatusCodes.Status200OK, marcas);
+        }
+
         // GET: Marcas/Details/5
         public async Task<IActionResult> Details(int? id)
         {

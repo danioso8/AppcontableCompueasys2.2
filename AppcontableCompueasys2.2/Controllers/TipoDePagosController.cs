@@ -111,7 +111,7 @@ namespace AppcontableCompueasys2._2.Controllers
             var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
           
-                var dbcontableContext =  _context.Categoria.Where(e => e.IdEmpresa == empresa.Id);
+                var dbcontableContext =  _context.TipoDePagos.Where(e => e.IdEmpresa == empresa.Id);
               
             return StatusCode( StatusCodes.Status200OK,  dbcontableContext);
         }
