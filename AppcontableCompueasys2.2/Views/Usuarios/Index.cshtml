@@ -73,10 +73,19 @@
                                                 @Html.DisplayFor(modelItem => item.Contrasena)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.EsAdministrador)
+                                            <select>
+                                            <option>@item.EsAdministrador</option> 
+                                            <option>False</option>
+                                                <option>True</option>
+                                            </select>
+                                            
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Activo)
+                                            <select>
+                                                <option>@item.Activo</option>
+                                                <option>False</option>
+                                                <option>True</option>
+                                            </select>
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.FechaRegistro)
