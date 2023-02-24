@@ -91,7 +91,7 @@ namespace CompueasysContable_2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registro([Bind("IdUsuario,Nombres,Apellidos,Correo,Contrasena,EsAdministrador,Activo,FechaRegistro,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
+        public async Task<IActionResult> Registro([Bind("IdUsuario,Nombres,Apellidos,Correo,Contrasena,EsAdministrador,Activo,Direccion,IdPais,IdDepartamento,IdCiudad,NombreEmpresa")] Usuario usuario)
         {
             if (!ModelState.IsValid)
             {
