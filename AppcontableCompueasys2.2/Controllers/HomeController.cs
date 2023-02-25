@@ -49,7 +49,7 @@ namespace CompueasysContable_2._2.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Dashboard()
+        public IActionResult Dashboard( string rol)
         {
 
             //datosLayout datosUser = new datosLayout();
@@ -70,6 +70,7 @@ namespace CompueasysContable_2._2.Controllers
             TempData["name"] = name;
             TempData["idUser"] = id;
             TempData["admin"] = admin;
+
 
 
             return View();
@@ -115,7 +116,8 @@ namespace CompueasysContable_2._2.Controllers
                     new Claim(ClaimTypes.Name, usuario.Nombres!),
                     new Claim("correo", usuario.Correo!),
                     new Claim("Empresa", usuario.NombreEmpresa!),
-                    
+                    new Claim(ClaimTypes.Role,  usuario.EsAdministrador.ToString()!),
+
 
                 };
                 
@@ -124,7 +126,7 @@ namespace CompueasysContable_2._2.Controllers
                 TempData["name"] = usuario.Nombres;
                 TempData["company"] = usuario.NombreEmpresa;
                 var id = TempData["idUser"];
-                var admin = usuario.EsAdministrador;
+                var rol = usuario.EsAdministrador;
                 ViewBag.IdUsuario = id;
                 ViewBag.company = TempData["company"];
                 ViewBag.name = TempData["name"];
@@ -133,7 +135,7 @@ namespace CompueasysContable_2._2.Controllers
                 TempData["company"] = company;
                 TempData["name"] = name;
                 TempData["idUser"] = id;
-                TempData["admin"] = admin;
+                TempData["admin"] = rol;
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -143,11 +145,11 @@ namespace CompueasysContable_2._2.Controllers
                  var empresa = _context.Empresas.Where(e => e.NombreEmpresa == usuario.NombreEmpresa).FirstOrDefault();
                 if (empresa == null)
                 {
-                    return RedirectToAction("Create", "Empresas");
+                    return RedirectToAction("Create", "Empresas", rol);
 
                 }
                 TempData["idEmpresa"] = empresa.Id;
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("Dashboard", "Home", rol);
 
 
             }

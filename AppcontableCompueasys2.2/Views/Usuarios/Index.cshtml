@@ -23,7 +23,7 @@
                
                     @{
                         Boolean admin = Convert.ToBoolean(TempData["admin"]);
-                        if (admin)
+                    if (User.IsInRole("True"))
                         {
                         <table id="datatablesSimple" class="table-striped">
                                 <thead>
