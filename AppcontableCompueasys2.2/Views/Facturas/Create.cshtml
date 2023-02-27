@@ -18,21 +18,21 @@
 
 <div class="container-fluid">
     
-
-    
-
     <div class="row">
+
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
 
-                            <form method="post" asp-action="buscarCliente" asp-controller="Facturas">
+                            <form method="post" asp-action="Get" asp-controller="Clientes">
                                 <div class="">
                                     <h6 class="m-0 font-weight-bold float-left text-white">Cliente</h6>
-                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
-                                    <input class="float-right" type="text" id="DaB" name="DaB" placeholder="Buscar Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                
+                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" name="btnNavbarSearch" type="submit" ><i class="fas fa-search"></i></button>
+                                    <input class="float-right" type="text" id="BuscarCliente" name="BuscarCliente" placeholder="Buscar Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                    
 
                                 </div>
                             </form>
@@ -220,12 +220,12 @@
             </div>
         </div>
     </div>
+
+
+    </div>
     
    
    
-
-
-</div>
 
 
 <div>
@@ -235,7 +235,7 @@
 @section Scripts{
     <script src="~/vendor/select2/es.min.js"></script>
     <script src="~/vendor/select2/select2.min.js"></script>
-    <script src="~/js/facturas.js"></script>
+   <script src="~/js/facturas.js"></script>
 }
 
 @*<script>

@@ -6,7 +6,26 @@
 
 
 $(document).ready(function () {
-    
+
+    fetch("/TipoDePagos/Get").then(res => {
+
+        return res.ok ? res.json() : Promise.reject(res);
+
+    }).then(resjson => {
+
+        if (resjson.length > 0) {
+
+            resjson.forEach((item) => {
+
+                $("#cboTipoDocumentoVenta").append(
+                    $("<option>").val(item.id).text(item.descripcion))
+
+
+
+            });
+        }
+    });
+
     var cont = 0;
 
     $("#ProductoSeleccionado").on('change', function () {
@@ -33,28 +52,11 @@ $(document).ready(function () {
         cont++;
     });
    
+
+  
+
     
-
-
-    fetch("/TipoDePagos/Get").then(res => {
-
-        return res.ok ? res.json() : Promise.reject(res);
-
-    }).then(resjson => {
-
-        if (resjson.length > 0) {
-
-            resjson.forEach((item) => {
-
-                $("#cboTipoDocumentoVenta").append(
-                    $("<option>").val(item.id).text(item.descripcion))
-
-
-
-            });
-        }
-    });
-
+   
 
 
 
@@ -91,6 +93,11 @@ $(document).ready(function () {
 });
 
 
+$("#btnTerminarVentar").click(function () {
+    const venta = {
+        idFactura: $("#")
+        }
+});
 
 
 

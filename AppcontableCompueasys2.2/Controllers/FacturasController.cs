@@ -22,6 +22,7 @@ namespace AppcontableCompueasys2._2.Controllers
         }
 
         // GET: Facturas
+
         public async Task<IActionResult> Index()
         {
 
@@ -45,12 +46,27 @@ namespace AppcontableCompueasys2._2.Controllers
 
 
 
-            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdProductoNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
+            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
             return View(await dbcontableContext.ToListAsync());
         }
 
 
+        public IActionResult Get()
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
+
+            var dbcontableContext = _context.Facturas.Where(f => f.IdEmpresa == empresa.Id);
+
+            return StatusCode(StatusCodes.Status200OK, dbcontableContext);
+        }
 
         // GET: Facturas/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -71,7 +87,6 @@ namespace AppcontableCompueasys2._2.Controllers
            
             var factura = await _context.Facturas
                 .Include(f => f.IdClienteNavigation)
-                .Include(f => f.IdProductoNavigation)
                 .Include(f => f.IdTipoDePagoNavigation)
                 .Include(f => f.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdFactura == id);
@@ -140,9 +155,10 @@ namespace AppcontableCompueasys2._2.Controllers
             ViewBag.ciudad = TempData["ciudad"];
             ViewBag.correo = TempData["correo"];
             ViewBag.celular = TempData["celular"];
+            ViewBag.mensaje = TempData["mensaje"];
 
 
-           
+
 
 
 
@@ -150,6 +166,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
             if (empresa.NombreEmpresa == company)
             {
+                ViewBag.IdEmpresa = empresa.Id;
                 //var productos = _context.Productos.Where(p => p.IdEmpresa == empresa.Id).FirstOrDefaultAsync();
                 var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
 
@@ -194,7 +211,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdFactura,IdUsuario,CantidadProducto,Total,FechaCompra,IdCliente,IdProducto,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago")] Factura factura)
+        public async Task<IActionResult> Create([Bind("IdFactura,IdUsuario,CantidadProducto,Total,FechaCompra,IdEmpresa,IdCliente,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago")] Factura factura)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -209,8 +226,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);            
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
 
@@ -221,7 +237,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
         
         
-        
+        //Buscar datos del cliente
         [HttpPost]
         public IActionResult BuscarCliente(string DaB)
         {
@@ -245,6 +261,8 @@ namespace AppcontableCompueasys2._2.Controllers
 
         }
         
+
+        //Buscar Productos
         [HttpPost]
         public IActionResult buscarProducto(string ProductoSeleccionado)
         {
@@ -271,6 +289,10 @@ namespace AppcontableCompueasys2._2.Controllers
 
         }
 
+       
+        
+        
+        
         // GET: Facturas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -292,7 +314,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 return NotFound();
             }
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
@@ -338,7 +360,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
-            ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre", factura.IdProducto);
+            
             ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
             ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
             return View(factura);
@@ -361,7 +383,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
             var factura = await _context.Facturas
                 .Include(f => f.IdClienteNavigation)
-                .Include(f => f.IdProductoNavigation)
+               
                 .Include(f => f.IdTipoDePagoNavigation)
                 .Include(f => f.IdUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdFactura == id);

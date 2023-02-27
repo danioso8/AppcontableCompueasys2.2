@@ -275,9 +275,9 @@ public partial class DbcontableContext : DbContext
                 .HasForeignKey(d => d.IdCliente)
                 .HasConstraintName("FK_FACTURAS_Clientes");
 
-            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.Facturas)
-                .HasForeignKey(d => d.IdProducto)
-                .HasConstraintName("FK_FACTURAS_PRODUCTO");
+            
+
+
 
             entity.HasOne(d => d.IdTipoDePagoNavigation).WithMany(p => p.Facturas)
                 .HasForeignKey(d => d.IdTipoDePago)

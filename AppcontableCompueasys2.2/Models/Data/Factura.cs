@@ -17,7 +17,7 @@ public partial class Factura
 
     public int? IdCliente { get; set; }
 
-    public int? IdProducto { get; set; }
+    public int? IdEmpresa { get; set; }
 
     public int? Iva { get; set; }
 
@@ -29,13 +29,16 @@ public partial class Factura
 
     public int? IdTipoDePago { get; set; }
 
+    //public List<Producto>? ProductoFactura { get; set; }    
+
     public virtual ICollection<DetalleCompra> DetalleCompras { get; } = new List<DetalleCompra>();
 
     public virtual Cliente? IdClienteNavigation { get; set; }
 
-    public virtual Producto? IdProductoNavigation { get; set; }
-
+   
     public virtual TipoDePago? IdTipoDePagoNavigation { get; set; }
 
     public virtual Usuario? IdUsuarioNavigation { get; set; }
+
 }
+

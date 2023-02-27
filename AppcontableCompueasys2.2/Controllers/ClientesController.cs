@@ -51,6 +51,48 @@ namespace AppcontableCompueasys2._2.Controllers
                 
           
         }
+        [HttpPost]
+        public IActionResult Get(string BuscarCliente)
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            var cliente = _context.Clientes.Where(c => c.Id == Convert.ToInt32(BuscarCliente) || c.Nombre == BuscarCliente || c.Cedula == BuscarCliente).Include(c => c.IdCiudadNavigation).Include(c => c.IdDepartamentoNavigation).Include(c => c.IdEmpresaNavigation).Include(c => c.IdPaisNavigation).FirstOrDefault(c => c.IdEmpresa == empresa.Id);
+            if (cliente != null)
+            {
+                TempData["iduser"] = cliente.Id;
+                TempData["cedula"] = cliente.Cedula;
+                TempData["nombre"] = cliente.Nombre;
+                TempData["direccion"] = cliente.Direccion;
+                TempData["ciudad"] = cliente.IdCiudad;
+                TempData["correo"] = cliente.Correo;
+                TempData["celular"] = cliente.Celular;
+
+               
+
+                return RedirectToAction("Create", "Facturas");
+
+            }
+            else
+            {
+                TempData["mensaje"] = "Cliente no se encontro";
+                return RedirectToAction("Create", "Facturas");
+            }
+
+
+            //var clientes = _context.Clientes.Where(c => c.Id == Convert.ToInt16(BuscarCliente) || c.Nombre == BuscarCliente || c.Celular == BuscarCliente && c.IdEmpresa == empresa.Id).FirstOrDefault();
+            //return StatusCode(StatusCodes.Status200OK, cliente );  
+
+            //return Json(cliente);
+        }
+
+       
+
 
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -172,7 +214,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Correo,Direccion,Celular,Cedula,Fecha,IdEmpresa,IdPais,IdDepartamento,IdCiudad")] Cliente cliente)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];

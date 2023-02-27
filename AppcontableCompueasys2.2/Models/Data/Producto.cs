@@ -33,7 +33,7 @@ public partial class Producto
 
     public virtual ICollection<DetalleCompra> DetalleCompras { get; } = new List<DetalleCompra>();
 
-    public virtual ICollection<Factura> Facturas { get; } = new List<Factura>();
+   
 
     public virtual Categoria? IdCategoriaNavigation { get; set; }
 

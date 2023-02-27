@@ -24,11 +24,18 @@
                     <thead>
                         <tr>
                             <th>
-                                CEDULA
+                                CODIGO
                             </th>
                             <th>
+                                CEDULA
+                            </th>
+                           <th>
                                 NOMBRE
                             </th>
+                            <th>
+                                CORREO
+                            </th>
+
                             <th>
                                 DIRECCION
                             </th>
@@ -45,10 +52,16 @@
                         {
                             <tr>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                 <td>
                                     @Html.DisplayFor(modelItem => item.Cedula)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Direccion)
