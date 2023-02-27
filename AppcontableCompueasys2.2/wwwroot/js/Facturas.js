@@ -7,7 +7,7 @@
 
 $(document).ready(function () {
 
-    fetch("/TipoDePagos/Get").then(res => {
+ fetch("/TipoDePagos/Get").then(res => {
 
         return res.ok ? res.json() : Promise.reject(res);
 
@@ -16,13 +16,27 @@ $(document).ready(function () {
         if (resjson.length > 0) {
 
             resjson.forEach((item) => {
-
+                
                 $("#cboTipoDocumentoVenta").append(
                     $("<option>").val(item.id).text(item.descripcion))
 
 
 
             });
+        }
+    });
+
+
+ fetch("/Facturas/Get").then(res => {
+
+        return res.ok ? res.json() : Promise.reject(res);
+
+    }).then(resjson => {
+
+        if (resjson.length > 0) {
+            
+            $("#IdFactura").text(`N° Factura: 00000${resjson.length+1}`);
+            
         }
     });
 
