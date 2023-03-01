@@ -1,4 +1,4 @@
-﻿@model IEnumerable< AppcontableCompueasys2._2.Models.Data.Producto>
+﻿@model AppcontableCompueasys2._2.Models.Data.Factura
 
 
 
@@ -10,24 +10,27 @@
 
 <br />
 <br />
-
+<form method="post" Create">
 <div class="text-right">
     <h1 class="pt-4">Numero de Factura #
-    <span class="pt-4" id="NumeroFactura" name="NumeroFactura"> @ViewBag.NumeroFactura</span>
+        <label asp-for="NumeroFactura"  class="pt-4" id="NumeroFactura" name="NumeroFactura"> @ViewBag.NumeroFactura</label>
+        
     </h1>
+    
 </div>
-<inpu type="text" id="IdEmpresa" value="@ViewBag.IdEmpresa"></inpu>
+<input id="IdEmpresa" asp-for="IdEmpresa" />
 
 <br />
 
 <hr />
 
 
-
+ 
 
 
 <div class="container-fluid">
-    
+   
+
     <div class="row">
 
         <div class="col-sm-8">
@@ -36,16 +39,16 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 bg-second-primary">
 
-                            <form method="post" asp-action="Get" asp-controller="Clientes">
+                          @* <form method="post" asp-action="Get" asp-controller="Clientes">*@
                                 <div class="">
                                     <h6 class="m-0 font-weight-bold float-left text-white">Cliente</h6>
                                 
-                                    <button class="float-right btn btn-primary" id="btnNavbarSearch" name="btnNavbarSearch" type="submit" ><i class="fas fa-search"></i></button>
+                                    <a class="float-right btn btn-primary" id="btnNavbarSearch" href="@Url.Action("BuscarCliente" , "Facturas",new {BuscarCliente = ""})" name="btnNavbarSearch"><i class="fas fa-search"></i></a>
                                     <input class="float-right" type="text" id="BuscarCliente" name="BuscarCliente" placeholder="Buscar Cliente" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                                     
 
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                         @{
                             if (TempData["mensaje"] != null)
@@ -63,7 +66,7 @@
                                        <div class="card-body">
                                     <div class="form-row">
                                         <div class="form-group col-sm-3">
-                                            <input type="text" class="form-control form-control-sm" value="@ViewBag.iduser" id="txtDocumentoCliente">
+                                            <input type="text" class="form-control form-control-sm" asp-for="IdUsuario" value="@ViewBag.iduser" id="txtDocumentoCliente">
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.cedula">
@@ -119,7 +122,7 @@
 
                                 <select id="ProductoSeleccionado" name="ProductoSeleccionado"  class="form-control" type="text">
                                     <option>Seleccione un producto</option>
-                                    @foreach (var Producto in Model)
+                                    @foreach (var Producto in ViewBag.productos)
                                     {
                                         <option precio="@Producto.Precio" value="@Producto.IdProducto">@Producto.Nombre   @Producto.Descripcion</option>
                                     }
@@ -189,7 +192,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="cboTipoDocumentoVenta">Tipo</label>
                                 </div>
-                                <select  class="custom-select" id="cboTipoDocumentoVenta">
+                                    <select asp-for="IdTipoDePago"  class="custom-select" id="cboTipoDocumentoVenta">
                                     @foreach (var item in @ViewBag.tipodePago)
                                     {
                                         <option value="@item.Id">@item.Descripcion</option>
@@ -206,21 +209,21 @@
                             </div>
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupIGV">IGV(18%)</span>
+                                    <span class="input-group-text"  id="inputGroupIGV">IGV(18%)</span>
                                 </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="txtIGV" disabled>
+                                <input type="text" asp-for="Iva" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="txtIGV" disabled>
                             </div>
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupIGV">Descuento</span>
                                 </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="Descuento">
+                                <input type="text" asp-for="Descuento" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="Descuento">
                             </div>
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupTotal">Total</span>
                                 </div>
-                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTotal" id="txtTotal" disabled>
+                                <input type="text" asp-for="Total" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTotal" id="txtTotal" disabled>
                             </div>
                         </div>
                     </div>
@@ -233,7 +236,7 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="form-group mb-0">
-                                <button class="btn btn-success btn-sm btn-block" type="button" id="btnTerminarVentar">Terminar Venta</button>
+                                <button class="btn btn-success btn-sm btn-block" type="submit" id="btnTerminarVentar">Terminar Venta</button>
                             </div>
                         </div>
                     </div>
@@ -241,12 +244,13 @@
             </div>
         </div>
     </div>
+    
 
 
     </div>
-    
-   
-   
+
+
+</form>
 
 
 <div>

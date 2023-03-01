@@ -1,8 +1,10 @@
 ﻿
 
+function enviarDatos() {
+    var BuscarCliente = document.getElementById("BuscarCliente").value;
+    var url = "/Facturas/BuscarCliente?BuscarCliente=" + encodeURIComponent(BuscarCliente);
 
-
-
+}
 
 $(document).ready(function () {
 
@@ -40,7 +42,23 @@ $(document).ready(function () {
  //   });
 
 
-  
+    //$("#btnNavbarSearch").click(function () {
+    //    var buscarCliente = $("#BuscarCliente").val();
+
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/Facturas/BuscarCliente",
+    //        data: { buscarCliente: buscarCliente },
+    //        success: function (resultado) {
+    //            console.log(resultado);
+    //        },
+    //        error: function () {
+    //            console.log("Ha ocurrido un error");
+    //        }
+    //    });
+    //});
+
+
 
     var cont = 0;
 

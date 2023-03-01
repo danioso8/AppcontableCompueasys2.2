@@ -170,11 +170,15 @@ namespace AppcontableCompueasys2._2.Controllers
             if (empresa.NombreEmpresa == company)
             {
                 ViewBag.IdEmpresa = empresa.Id;
+               
                 var tiposdePagos = _context.TipoDePagos.Where(t => t.IdEmpresa == empresa.Id).ToList();
                 ViewBag.tipodePago = tiposdePagos;
-                //var productos = _context.Productos.Where(p => p.IdEmpresa == empresa.Id).FirstOrDefaultAsync();
-                var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
-                var NumeroFactura = _context.Facturas.Where(f => f.IdEmpresa == empresa.Id).ToList();
+                
+                var productos = _context.Productos.Where(p => p.IdEmpresa == empresa.Id).ToList();
+                ViewBag.productos = productos;
+               
+                //var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+                var NumeroFactura = _context.Facturas.Where(f => f.IdEmpresa == empresa.Id).ToList();               
                 double numeroFac = Convert.ToDouble(tiposdePagos.LongCount());
                 ViewBag.NumeroFactura = numeroFac + 1;
 
@@ -184,7 +188,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre");
                
 
-                return View(dbcontableContext);
+                return View();
             }
             return View();
 
@@ -272,9 +276,9 @@ namespace AppcontableCompueasys2._2.Controllers
 
         //Buscar datos del cliente
         [HttpPost]
-        public IActionResult BuscarCliente(string DaB)
+        public IActionResult BuscarCliente(string BuscarCliente)
         {
-            var cliente = _context.Clientes.Where(c => c.Id == Convert.ToInt32(DaB) || c.Cedula == DaB || c.Nombre == DaB).FirstOrDefault();
+            var cliente = _context.Clientes.Where(c => c.Id == Convert.ToInt32(BuscarCliente) || c.Cedula == BuscarCliente || c.Nombre == BuscarCliente).FirstOrDefault();
             if (cliente !=null)
             {
                TempData["iduser"] = cliente.Id;
