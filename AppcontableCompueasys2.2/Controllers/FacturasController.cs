@@ -243,7 +243,7 @@ namespace AppcontableCompueasys2._2.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateFactu([FromBody] Factura factura)
+        public async Task<IActionResult> CreateFactu([FromHeader] Factura factura)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
