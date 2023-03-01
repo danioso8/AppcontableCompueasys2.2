@@ -9,8 +9,6 @@ public partial class Factura
 
     public int? IdUsuario { get; set; }
 
-    public int? CantidadProducto { get; set; }
-
     public decimal? Total { get; set; }
 
     public DateTime? FechaCompra { get; set; }
@@ -29,6 +27,11 @@ public partial class Factura
 
     public int? IdTipoDePago { get; set; }
 
+    public int? IdDetalleCompra { get; set; }
+
+    public decimal? NumeroFactura { get; set; }
+   
+
     //public List<Producto>? ProductoFactura { get; set; }    
 
     public virtual ICollection<DetalleCompra> DetalleCompras { get; } = new List<DetalleCompra>();
@@ -37,6 +40,8 @@ public partial class Factura
 
    
     public virtual TipoDePago? IdTipoDePagoNavigation { get; set; }
+
+    
 
     public virtual Usuario? IdUsuarioNavigation { get; set; }
 

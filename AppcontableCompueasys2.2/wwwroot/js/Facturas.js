@@ -7,37 +7,75 @@
 
 $(document).ready(function () {
 
- fetch("/TipoDePagos/Get").then(res => {
+ //fetch("/TipoDePagos/Get").then(res => {
 
-        return res.ok ? res.json() : Promise.reject(res);
+ //       return res.ok ? res.json() : Promise.reject(res);
 
-    }).then(resjson => {
+ //   }).then(resjson => {
 
-        if (resjson.length > 0) {
+ //       if (resjson.length > 0) {
 
-            resjson.forEach((item) => {
-                
-                $("#cboTipoDocumentoVenta").append(
-                    $("<option>").val(item.id).text(item.descripcion))
+ //           resjson.forEach((item) => {
 
-
-
-            });
-        }
-    });
+ //               $("#cboTipoDocumentoVenta").append(
+ //                   $("<option>").val(item.id).text(item.descripcion))
 
 
- fetch("/Facturas/Get").then(res => {
 
-        return res.ok ? res.json() : Promise.reject(res);
+ //           });
+ //       }
+ //   });
 
-    }).then(resjson => {
 
-        if (resjson.length > 0) {
-            
-            $("#IdFactura").text(`N° Factura: 00000${resjson.length+1}`);
-            
-        }
+ //fetch("/Facturas/Get").then(res => {
+
+ //       return res.ok ? res.json() : Promise.reject(res);
+
+ //   }).then(resjson => {
+
+ //       if (resjson.length > 0) {
+
+ //           $("#NumeroFactura").text(`N° Factura: 00000${resjson.length+1}`);
+
+ //       }
+ //   });
+
+
+    $("#btnTerminarVentar").click(function () {
+        var Nfactura = $("#NumeroFactura").val();
+        var IdCliente = $("#txtDocumentoCliente").val();
+        var Total = $("#txtTotal").val();
+        var tipoPago = $("#cboTipoDocumentoVenta option:selected").val();
+        var Descuento = $("#Descuento").val();
+        var iva = $("#txtIGV").val();
+        var IdEmpresa = $("#IdEmpresa").val();
+        var IdDetalleC = $("#IdEmpresa").val();
+        var Observaciones = $("#IdEmpresa").val();
+        var Estado = $("#IdEmpresa").val();
+
+
+        $.ajax({
+            url: "/Facturas/CreateFactu",
+            type: "POST",
+            data: {
+                Nfactura: Nfactura,
+                IdCliente: IdCliente,
+                Total: Total,
+                tipoPago: tipoPago,
+                Descuento: Descuento,
+                iva: iva,
+                IdEmpresa: IdEmpresa,
+                IdDetalleC: IdDetalleC,
+                Observaciones: Observaciones,
+                Estado: Estado
+            },
+            success: function (result) {
+                // hacer algo con la respuesta del controlador
+            },
+            error: function (error) {
+                // manejar el error
+            }
+        });
     });
 
     var cont = 0;
@@ -69,7 +107,7 @@ $(document).ready(function () {
 
   
 
-    
+  
    
 
 
@@ -107,19 +145,15 @@ $(document).ready(function () {
 });
 
 
-$("#btnTerminarVentar").click(function () {
-    const venta = {
-        idFactura: $("#")
-        }
-});
 
 
 
-var inputCantidad = $("#Cantidad");
-inputCantidad.keypress(function (event) {
-    if (event.keyCode == 13) {
-        let sumaTotal = parseInt(precio) * $("#Cantidad").val();
-        $("#txtSubTotal").val(sumaTotal)
-        $("#txtTotal").val(sumaTotal)
-    }
-});
+
+//var inputCantidad = $("#Cantidad");
+//inputCantidad.keypress(function (event) {
+//    if (event.keyCode == 13) {
+//        let sumaTotal = parseInt(precio) * $("#Cantidad").val();
+//        $("#txtSubTotal").val(sumaTotal)
+//        $("#txtTotal").val(sumaTotal)
+//    }
+//});

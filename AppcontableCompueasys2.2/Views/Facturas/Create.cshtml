@@ -11,8 +11,13 @@
 <br />
 <br />
 
+<div class="text-right">
+    <h1 class="pt-4">Numero de Factura #
+    <span class="pt-4" id="NumeroFactura" name="NumeroFactura"> @ViewBag.NumeroFactura</span>
+    </h1>
+</div>
+<inpu type="text" id="IdEmpresa" value="@ViewBag.IdEmpresa"></inpu>
 
-<h1 class="pt-4" id="IdFactura" name="IdFactura"></h1>
 <br />
 
 <hr />
@@ -184,7 +189,12 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="cboTipoDocumentoVenta">Tipo</label>
                                 </div>
-                                <select class="custom-select" id="cboTipoDocumentoVenta">
+                                <select  class="custom-select" id="cboTipoDocumentoVenta">
+                                    @foreach (var item in @ViewBag.tipodePago)
+                                    {
+                                        <option value="@item.Id">@item.Descripcion</option>
+                                        
+                                    }
                                   
                                 </select>
                             </div>
@@ -199,6 +209,12 @@
                                     <span class="input-group-text" id="inputGroupIGV">IGV(18%)</span>
                                 </div>
                                 <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="txtIGV" disabled>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupIGV">Descuento</span>
+                                </div>
+                                <input type="text" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupIGV" id="Descuento">
                             </div>
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
@@ -217,7 +233,7 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="form-group mb-0">
-                                <button class="btn btn-success btn-sm btn-block" id="btnTerminarVentar">Terminar Venta</button>
+                                <button class="btn btn-success btn-sm btn-block" type="button" id="btnTerminarVentar">Terminar Venta</button>
                             </div>
                         </div>
                     </div>
@@ -240,7 +256,7 @@
 @section Scripts{
     <script src="~/vendor/select2/es.min.js"></script>
     <script src="~/vendor/select2/select2.min.js"></script>
-   <script src="~/js/facturas.js"></script>
+    <script src="~/js/facturas.js"></script>
 }
 
 @*<script>

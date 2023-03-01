@@ -73,7 +73,7 @@ namespace AppcontableCompueasys2._2.Controllers
                 TempData["correo"] = cliente.Correo;
                 TempData["celular"] = cliente.Celular;
 
-               
+
 
                 return RedirectToAction("Create", "Facturas");
 
@@ -86,9 +86,9 @@ namespace AppcontableCompueasys2._2.Controllers
 
 
             //var clientes = _context.Clientes.Where(c => c.Id == Convert.ToInt16(BuscarCliente) || c.Nombre == BuscarCliente || c.Celular == BuscarCliente && c.IdEmpresa == empresa.Id).FirstOrDefault();
-            //return StatusCode(StatusCodes.Status200OK, cliente );  
+            //return StatusCode(StatusCodes.Status200OK, cliente);
 
-            //return Json(cliente);
+            // return Json(cliente);
         }
 
        

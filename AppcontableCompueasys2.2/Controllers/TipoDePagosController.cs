@@ -99,6 +99,8 @@ namespace AppcontableCompueasys2._2.Controllers
             }
             return View(tipoDePago);
         }
+
+        
         public  IActionResult Get()
         {
             ViewBag.company = TempData["company"];

@@ -43,7 +43,7 @@ namespace AppcontableCompueasys2._2.Controllers
             // int idProductoSeleccionado = int.Parse(form["producto"]);
             //var productoSeleccionado = _dbContext.Productos.FirstOrDefault(p => p.Id == idProductoSeleccionado);
 
-
+           
 
 
             var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
@@ -170,11 +170,14 @@ namespace AppcontableCompueasys2._2.Controllers
             if (empresa.NombreEmpresa == company)
             {
                 ViewBag.IdEmpresa = empresa.Id;
+                var tiposdePagos = _context.TipoDePagos.Where(t => t.IdEmpresa == empresa.Id).ToList();
+                ViewBag.tipodePago = tiposdePagos;
                 //var productos = _context.Productos.Where(p => p.IdEmpresa == empresa.Id).FirstOrDefaultAsync();
                 var dbcontableContext = _context.Productos.Where(e => e.IdEmpresa == empresa.Id);
+                var NumeroFactura = _context.Facturas.Where(f => f.IdEmpresa == empresa.Id).ToList();
+                double numeroFac = Convert.ToDouble(tiposdePagos.LongCount());
+                ViewBag.NumeroFactura = numeroFac + 1;
 
-
-                
                 ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
                 ViewData["IdProducto"] = new SelectList(_context.Productos, "IdProducto", "Nombre");
                 ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion");
@@ -214,7 +217,7 @@ namespace AppcontableCompueasys2._2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdFactura,IdUsuario,CantidadProducto,Total,FechaCompra,IdEmpresa,IdCliente,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago")] Factura factura)
+        public async Task<IActionResult> Create([Bind("IdFactura,IdUsuario,NumeroFactura,Total,FechaCompra,IdEmpresa,IdCliente,Iva,Descuento,Observaciones,EstadoFactura,IdTipoDePago,IdDetalleCompra")] Factura factura)
         {
             ViewBag.company = TempData["company"];
             ViewBag.name = TempData["name"];
@@ -238,8 +241,35 @@ namespace AppcontableCompueasys2._2.Controllers
             return View(factura.ToString(), listaProductos);
         }
 
-        
-        
+
+        [HttpPost]
+        public async Task<IActionResult> CreateFactu([FromBody] Factura factura)
+        {
+            ViewBag.company = TempData["company"];
+            ViewBag.name = TempData["name"];
+            string company = ViewBag.company;
+            var name = ViewBag.name;
+            TempData["company"] = company;
+            TempData["name"] = name;
+            ViewBag.id = TempData["id"];
+            if (ModelState.IsValid)
+            {
+                _context.Add(factura);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdCliente"] = new SelectList(_context.Clientes, "Id", "Nombre", factura.IdCliente);
+            ViewData["IdTipoDePago"] = new SelectList(_context.TipoDePagos, "Id", "Descripcion", factura.IdTipoDePago);
+            ViewData["IdUsuario"] = new SelectList(_context.Usuarios, "IdUsuario", "Nombre", factura.IdUsuario);
+
+            List<string> listaProductos = ViewBag.listaProductos;
+
+            return View(factura.ToString(), listaProductos);
+        }
+
+
+
+
         //Buscar datos del cliente
         [HttpPost]
         public IActionResult BuscarCliente(string DaB)
