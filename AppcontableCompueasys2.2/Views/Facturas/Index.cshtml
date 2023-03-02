@@ -9,36 +9,44 @@
 
 
 
-<div class="container-fluid px-4">
+
+<div class="pt-4">
 
 
-    <div class="card mb-4 pt-5">
-        <div class="card-header">
-            <div class="card-header py-3 bg-second-primary">
-                <h6 class="m-0 font-weight-bold text-white"> <i class="fas fa-table me-1"></i> Tabla de Facturas</h6>
+
+    <div class="container-fluid px-4">
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="card-header py-3 bg-second-primary">
+                    <h6 class="m-0 font-weight-bold text-white"> <i class="fas fa-table me-1"></i> Tabla de Clientes</h6>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
-               
+            <div class="card-body">
+
+                <table id="datatablesSimple" class="table-striped">
                     <thead>
                         <tr>
                             <th>
                                 N° Factura
                             </th>
-                        <th>
-                             Cliente
-                        </th>
                             <th>
-                              Total
+                                Cliente
                             </th>
-                            
                             <th>
-                               Fecha
+                                Detalle de la compra
                             </th>
-                           
-                            
-                           
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Fecha
+                            </th>
+
+
+
                         </tr>
                     </thead>
                     <tbody>
@@ -51,14 +59,18 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.IdCliente)
                                 </td>
-                               
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdDetalleCompra)
+                                </td>
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Total)
                                 </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FechaCompra)
-                            </td>
-                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaCompra)
+                                </td>
+
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.IdFactura">Edit</a> |
                                     <a asp-action="Details" asp-route-id="@item.IdFactura">Details</a> |
@@ -67,12 +79,18 @@
                             </tr>
                         }
                     </tbody>
-               
-            </table>
+                </table>
+            </div>
         </div>
     </div>
+
 </div>
 
+
+
+@section Scripts{
+    <script src="~/js/vistas/productos.js"></script>
+}
 <p>
     <a class="btn btn-danger" asp-action="Create">NUEVO FACTURA</a>
 </p>

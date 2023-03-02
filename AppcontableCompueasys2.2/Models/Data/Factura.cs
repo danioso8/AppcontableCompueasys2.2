@@ -29,7 +29,7 @@ public partial class Factura
 
     public int? IdDetalleCompra { get; set; }
 
-    public decimal? NumeroFactura { get; set; }
+    public string? NumeroFactura { get; set; }
    
 
     //public List<Producto>? ProductoFactura { get; set; }    

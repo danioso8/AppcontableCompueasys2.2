@@ -270,7 +270,8 @@ public partial class DbcontableContext : DbContext
                 .HasMaxLength(100)
                 .IsFixedLength();
             entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.NumeroFactura).HasColumnType("decimal(10, 2)");
+            
+           
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Facturas)
                 .HasForeignKey(d => d.IdCliente)

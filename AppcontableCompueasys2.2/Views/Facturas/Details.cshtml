@@ -90,7 +90,7 @@
             </td>
             <td style="text-align:right">
                 <table style="margin-right:0;margin-left:auto">
-                    <tr><td><p class="title2">NÚMERO VENTA</p></td></tr>
+                    <tr><td><p class="title2">Numero de Factura #@Html.DisplayFor(model => model.NumeroFactura)</p></td></tr>
                     <tr><td>model.IdFactura</td></tr>
                 </table>
             </td>
@@ -103,7 +103,7 @@
                 <table>
                     <tr>
                         <td>
-                            <p class="title">model.IdCliente.ToUpper()</p>
+                            <p class="title"> @Html.DisplayFor(model => model.IdEmpresa)</p>
                         </td>
                     </tr>
                     <tr>

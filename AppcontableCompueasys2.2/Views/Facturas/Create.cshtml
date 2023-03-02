@@ -16,9 +16,19 @@
         <label asp-for="NumeroFactura"  class="pt-4" id="NumeroFactura" name="NumeroFactura"> @ViewBag.NumeroFactura</label>
         
     </h1>
+        <div class="form-group">
+            <label asp-for="NumeroFactura" class="control-label"></label>
+            <input asp-for="NumeroFactura" class="form-control" value="@ViewBag.NumeroFactura" />
+            <span asp-validation-for="NumeroFactura" class="text-danger"></span>
+        </div>
+
     
 </div>
-<input id="IdEmpresa" asp-for="IdEmpresa" />
+    <div class="form-group">
+        <label asp-for="IdEmpresa" class="control-label"></label>
+        <input asp-for="IdEmpresa" class="form-control" value="@ViewBag.IdEmpresa" />
+        <span asp-validation-for="IdEmpresa" class="text-danger"></span>
+    </div>
 
 <br />
 
@@ -66,8 +76,10 @@
                                        <div class="card-body">
                                     <div class="form-row">
                                         <div class="form-group col-sm-3">
+                                            <label asp-for="IdUsuario" class="control-label"></label>
                                             <input type="text" class="form-control form-control-sm" asp-for="IdUsuario" value="@ViewBag.iduser" id="txtDocumentoCliente">
                                         </div>
+                                                
                                         <div class="form-group col-sm-3">
                                             <input type="text" class="form-control form-control-sm" id="txtDocumentoCliente" value="@ViewBag.cedula">
                                         </div>
@@ -223,6 +235,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupTotal">Total</span>
                                 </div>
+                                 <label asp-for="Total" class="control-label"></label>
                                 <input type="text" asp-for="Total" class="form-control text-right" aria-label="Small" aria-describedby="inputGroupTotal" id="txtTotal" disabled>
                             </div>
                         </div>

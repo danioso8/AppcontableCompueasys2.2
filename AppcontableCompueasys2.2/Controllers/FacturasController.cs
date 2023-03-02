@@ -36,7 +36,7 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
 
-            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefaultAsync();
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
 
             //Obtener datos de la vista
             //(IFormColletion form)
@@ -46,7 +46,8 @@ namespace AppcontableCompueasys2._2.Controllers
            
 
 
-            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation);
+            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation).Where(e=> e.IdEmpresa == empresa.Id);
+
             return View(await dbcontableContext.ToListAsync());
         }
 
