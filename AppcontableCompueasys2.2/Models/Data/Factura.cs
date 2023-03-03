@@ -32,16 +32,11 @@ public partial class Factura
     public string? NumeroFactura { get; set; }
    
 
-    //public List<Producto>? ProductoFactura { get; set; }    
-
     public virtual ICollection<DetalleCompra> DetalleCompras { get; } = new List<DetalleCompra>();
 
-    public virtual Cliente? IdClienteNavigation { get; set; }
-
+    public virtual Cliente? IdClienteNavigation { get; set; }     
    
-    public virtual TipoDePago? IdTipoDePagoNavigation { get; set; }
-
-    
+    public virtual Empresa? IdEmpresaNavigation { get; set; }
 
     public virtual Usuario? IdUsuarioNavigation { get; set; }
 

@@ -33,6 +33,8 @@ public partial class Empresa
 
     public virtual ICollection<Empleado> Empleados { get; } = new List<Empleado>();
 
+    public virtual ICollection<Factura> Facturas { get; } = new List<Factura>();
+
     public virtual Ciudad? IdCiudadNavigation { get; set; }
 
     public virtual Departamento? IdDepartamentoNavigation { get; set; }

@@ -11,5 +11,5 @@ public partial class TipoDePago
 
     public int IdEmpresa { get; set; }
 
-    public virtual ICollection<Factura> Facturas { get; } = new List<Factura>();
+  
 }

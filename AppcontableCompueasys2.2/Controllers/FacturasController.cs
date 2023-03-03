@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AppcontableCompueasys2._2.Models.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using NuGet.Packaging;
 
 namespace AppcontableCompueasys2._2.Controllers
 {
@@ -46,7 +47,7 @@ namespace AppcontableCompueasys2._2.Controllers
            
 
 
-            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdTipoDePagoNavigation).Include(f => f.IdUsuarioNavigation).Where(e=> e.IdEmpresa == empresa.Id);
+            var dbcontableContext = _context.Facturas.Include(f => f.IdClienteNavigation).Include(f => f.IdUsuarioNavigation).Include(f => f.IdEmpresaNavigation).Where(e=> e.IdEmpresa == empresa.Id);
 
             return View(await dbcontableContext.ToListAsync());
         }
@@ -82,6 +83,10 @@ namespace AppcontableCompueasys2._2.Controllers
             TempData["company"] = company;
             TempData["name"] = name;
             ViewBag.id = TempData["id"];
+            var empresa = _context.Empresas.Where(e => e.NombreEmpresa == company).FirstOrDefault();
+            ViewBag.detalleCompra = _context.DetalleCompras.Where(c => c.IdEmpresa == empresa.Id && c.IdFactura == id).ToList();
+           
+           
             if (id == null || _context.Facturas == null)
             {
                 return NotFound();
@@ -91,8 +96,8 @@ namespace AppcontableCompueasys2._2.Controllers
            
             var factura = await _context.Facturas
                 .Include(f => f.IdClienteNavigation)
-                .Include(f => f.IdTipoDePagoNavigation)
                 .Include(f => f.IdUsuarioNavigation)
+                .Include(f => f.IdEmpresaNavigation)
                 .FirstOrDefaultAsync(m => m.IdFactura == id);
             if (factura == null)
             {
@@ -421,9 +426,8 @@ namespace AppcontableCompueasys2._2.Controllers
 
             var factura = await _context.Facturas
                 .Include(f => f.IdClienteNavigation)
-               
-                .Include(f => f.IdTipoDePagoNavigation)
                 .Include(f => f.IdUsuarioNavigation)
+                .Include(f => f.IdEmpresaNavigation)
                 .FirstOrDefaultAsync(m => m.IdFactura == id);
             if (factura == null)
             {

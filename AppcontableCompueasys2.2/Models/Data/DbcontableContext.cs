@@ -149,6 +149,8 @@ public partial class DbcontableContext : DbContext
 
             entity.ToTable("DETALLE_COMPRA");
 
+            entity.Property(e => e.Precio).HasColumnType("decimal(10, 2)");
+
             entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.DetalleCompras)
@@ -269,19 +271,18 @@ public partial class DbcontableContext : DbContext
             entity.Property(e => e.Observaciones)
                 .HasMaxLength(100)
                 .IsFixedLength();
-            entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
-            
+           
+            entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");          
            
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Facturas)
                 .HasForeignKey(d => d.IdCliente)
                 .HasConstraintName("FK_FACTURAS_Clientes");
 
-            entity.HasOne(d => d.IdTipoDePagoNavigation).WithMany(p => p.Facturas)
-                .HasForeignKey(d => d.IdTipoDePago)
-                .HasConstraintName("FK_FACTURAS_TIPO DE PAGO");
+            entity.HasOne(d => d.IdEmpresaNavigation).WithMany(p => p.Facturas)
+                .HasForeignKey(d => d.IdEmpresa)
+                .HasConstraintName("FK_FACTURAS_Empresa");
 
-            
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Facturas)
                 .HasForeignKey(d => d.IdUsuario)
